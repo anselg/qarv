@@ -325,5 +325,15 @@ C41Filter* C41SettingsWidget::filter() {
   return static_cast<C41Filter*>(imageFilter);
 }
 
+void C41SettingsWidget::on_useValuesButton_clicked(bool checked) {
+  minRBox->setValue(minRBoxAnalyze->value());
+  minGBox->setValue(minGBoxAnalyze->value());
+  minBBox->setValue(minBBoxAnalyze->value());
+  lightBox->setValue(lightBoxAnalyze->value());
+  gammaGBox->setValue(gammaGBoxAnalyze->value());
+  gammaBBox->setValue(gammaBBoxAnalyze->value());
+}
+
+
 Q_EXPORT_PLUGIN2(C41Plugin, QArv::C41Plugin)
 Q_IMPORT_PLUGIN(C41Plugin)

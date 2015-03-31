@@ -75,6 +75,9 @@ protected slots:
 public slots:
   void updateAnalysis(QArv::C41Filter::Values values);
 
+private slots:
+  void on_useValuesButton_clicked(bool checked);
+
 private:
   C41Filter* filter();
 };
