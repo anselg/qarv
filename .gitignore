@@ -3,3 +3,7 @@
 apidoc/html/
 build/
 qarv.kdev4
+
+moc_*
+*~
+*.swp
