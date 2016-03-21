@@ -149,17 +149,32 @@ set_prefixed(qarv_decoders_SRC src/decoders/
   bayer.cpp
 )
 set_prefixed(qarv_recorders_MOCS src/recorders/
-  rawrecorders.h
-  gstrecorders.h
-  imagerecorder.h
+  rawrecorders/rawdecoded16.h
+  rawrecorders/rawdecoded8.h
+  rawrecorders/rawundecoded.h
+  gstrecorders/gstrecorders.h
+  imagerecorders/imagerecorder.h
 )
+#set_prefixed(qarv_recorders_MOCS src/recorders/
+#  rawrecorders.h
+#  gstrecorders.h
+#  imagerecorder.h
+#)
 qt5_wrap_cpp(qarv_recorders_MOCD ${qarv_recorders_MOCS})
 set_prefixed(qarv_recorders_SRC src/recorders/
-  rawrecorders.cpp
-  gstrecorders.cpp
-  gstrecorder_implementation.cpp
-  imagerecorder.cpp
+  rawrecorders/rawdecoded16.cpp
+  rawrecorders/rawdecoded8.cpp
+  rawrecorders/rawundecoded.cpp
+  gstrecorders/gstrecorders.cpp
+  gstrecorders/gstrecorder_implementation.cpp
+  imagerecorders/imagerecorder.cpp
 )
+#set_prefixed(qarv_recorders_SRC src/recorders/
+#  rawrecorders.cpp
+#  gstrecorders.cpp
+#  gstrecorder_implementation.cpp
+#  imagerecorder.cpp
+#)
 set_prefixed(qarv_filters_MOCS src/filters/
   levels.h
 )
@@ -224,7 +239,7 @@ add_executable(qarv_videoplayer
   src/utils/qarv_videoplayer.cpp
   src/glvideowidget.cpp
   src/globals.cpp
-  src/recorders/gstrecorder_implementation.cpp
+  src/recorders/gstrecorders/gstrecorder_implementation.cpp
   src/globals.cpp
   ${qarv_videoplayer_MOC}
   ${qarv_videoplayer_UI}

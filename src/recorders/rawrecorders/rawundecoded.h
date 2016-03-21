@@ -17,21 +17,31 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "recorders/gstrecorders.h"
-#include "recorders/gstrecorder_implementation.h"
+#ifndef RAWRECORDERS_H
+#define RAWRECORDERS_H
 
-using namespace QArv;
+//#include "recorder.h"
+#include "recorders/recorder.h"
 
-Recorder* HuffyuvAviFormat::makeRecorder(QArvDecoder* decoder,
-                                         QString fileName,
-                                         QSize frameSize,
-                                         int framesPerSecond,
-                                         bool writeInfo) {
-	return makeGstRecorder({ "avenc_huffyuv", "avimux" },
-	                       "avenc_huffyuv ! avimux",
-	                       decoder, fileName, frameSize,
-	                       framesPerSecond, writeInfo);
+namespace QArv {
+
+class RawUndecodedFormat: public QObject, public OutputFormat {
+	Q_OBJECT
+	Q_INTERFACES(QArv::OutputFormat)
+//	Q_PLUGIN_METADATA(IID "org.qt-project.Qt.RawUndecodedFormat" FILE "RawUndecodedFormat.json") // Qt5
+	Q_PLUGIN_METADATA(IID "org.qt-project.Qt.QArvOutputFormat" FILE "RawUndecodedFormat.json") // Qt5
+
+	public:
+		QString name() { return "Raw undecoded"; }
+		bool canAppend() { return true; }
+		bool canWriteInfo() { return true; }
+		Recorder* makeRecorder(QArvDecoder* decoder,
+		                       QString fileName,
+		                       QSize frameSize,
+		                       int framesPerSecond,
+		                       bool writeInfo);
+};
+
 }
 
-Q_EXPORT_PLUGIN2(HuffyuvAvi, QArv::HuffyuvAviFormat)
-Q_IMPORT_PLUGIN(HuffyuvAvi)
+#endif

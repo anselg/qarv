@@ -17,26 +17,28 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef IMAGERECORDER_H
-#define IMAGERECORDER_H
+#ifndef RAWDECODED16_H
+#define RAWDECODED16_H
 
+//#include "recorder.h"
 #include "recorders/recorder.h"
 
 namespace QArv {
 
-class ImageFormat: public QObject, public OutputFormat {
+class RawDecoded16Format: public QObject, public OutputFormat {
 	Q_OBJECT
 	Q_INTERFACES(QArv::OutputFormat)
+//	Q_PLUGIN_METADATA(IID "org.qt-project.Qt.RawDecoded16Format" FILE "RawDecoded16Format.json") // Qt5
+	Q_PLUGIN_METADATA(IID "org.qt-project.Qt.QArvOutputFormat" FILE "RawDecoded16Format.json") // Qt5
 
-public:
-	QString name() { return "TIFF images"; }
-	bool canAppend() { return true; }
-	bool canWriteInfo() { return false; }
-	Recorder* makeRecorder(QArvDecoder* decoder,
-	                       QString fileName,
-	                       QSize frameSize,
-	                       int framesPerSecond,
-	                       bool writeInfo);
+	public:
+		QString name() { return "Raw decoded (16-bit)"; }
+		bool canWriteInfo() { return true; }
+		Recorder* makeRecorder(QArvDecoder* decoder,
+		                       QString fileName,
+		                       QSize frameSize,
+		                       int framesPerSecond,
+		                       bool writeInfo);
 };
 
 }

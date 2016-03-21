@@ -85,7 +85,7 @@ class OutputFormat {
 
 }
 
-Q_DECLARE_INTERFACE(QArv::OutputFormat,"si.ad-vega.qarv.QArvOutputFormat/0.1")
+Q_DECLARE_INTERFACE(QArv::OutputFormat,"org.qt-project.Qt.QArvOutputFormat")
 Q_DECLARE_METATYPE(QArv::OutputFormat*)
 
 #endif

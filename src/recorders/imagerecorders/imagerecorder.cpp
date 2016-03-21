@@ -17,7 +17,7 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "recorders/imagerecorder.h"
+#include "recorders/imagerecorders/imagerecorder.h"
 #include <opencv2/highgui/highgui.hpp>
 #include <QFileInfo>
 
@@ -67,5 +67,7 @@ Recorder* ImageFormat::makeRecorder(QArvDecoder* decoder,
 	return new ImageRecorder(decoder, fileName);
 }
 
-Q_EXPORT_PLUGIN2(ImageRecorder, QArv::ImageFormat)
+Q_PLUGIN_METADATA(IID "org.qt-project.Qt.QArvOutputFormat")
+
+//Q_EXPORT_PLUGIN2(ImageRecorder, QArv::ImageFormat)
 Q_IMPORT_PLUGIN(ImageRecorder)

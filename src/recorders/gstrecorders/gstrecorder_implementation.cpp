@@ -17,7 +17,7 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "recorders/gstrecorder_implementation.h"
+#include "recorders/gstrecorders/gstrecorder_implementation.h"
 #include <QProcess>
 #include <QFileInfo>
 #include <QStringList>
