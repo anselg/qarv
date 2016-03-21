@@ -139,5 +139,5 @@ double LevelsSettingsWidget::intToDouble(int val) {
 }
 
 Q_PLUGIN_METADATA(IID "org.qt-project.Qt.QArvImageFilterPlugin")
-////Q_EXPORT_PLUGIN2(LevelsPlugin, QArv::LevelsPlugin)
+//Q_EXPORT_PLUGIN2(LevelsPlugin, QArv::LevelsPlugin)
 Q_IMPORT_PLUGIN(LevelsPlugin)

@@ -1,20 +1,20 @@
 /*
-    QArv, a Qt interface to aravis.
-    Copyright (C) 2012, 2013 Jure Varlec <jure.varlec@ad-vega.si>
-                             Andrej Lajovic <andrej.lajovic@ad-vega.si>
-
-    This program is free software: you can redistribute it and/or modify
-    it under the terms of the GNU General Public License as published by
-    the Free Software Foundation, either version 3 of the License, or
-    (at your option) any later version.
-
-    This program is distributed in the hope that it will be useful,
-    but WITHOUT ANY WARRANTY; without even the implied warranty of
-    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-    GNU General Public License for more details.
-
-    You should have received a copy of the GNU General Public License
-    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ * QArv, a Qt interface to aravis.
+ * Copyright (C) 2012-2014 Jure Varlec <jure.varlec@ad-vega.si>
+ * Andrej Lajovic <andrej.lajovic@ad-vega.si>
+ *
+ * This program is free software: you can redistribute it and/or modify 
+ * it under the terms of the GNU General Public License as published by 
+ * the Free Software Foundation, either version 3 of the License, or 
+ * (at your option) any later version. 
+ *
+ * This program is distributed in the hope that it will be useful, 
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of 
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the 
+ * GNU General Public License for more details. 
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
 #ifndef QARVTYPE_H
@@ -31,24 +31,24 @@
  * used by QArvCameraDelegate.
  */
 struct QArvEditor : QWidget {
-  Q_OBJECT
+	Q_OBJECT
 
-public:
-  QArvEditor(QWidget* parent = 0);
+	public:
+		QArvEditor(QWidget* parent = 0);
 
-signals:
-  void editingFinished();
+	signals:
+		void editingFinished();
 
-private slots:
-  void editingComplete() { emit editingFinished(); }
+	private slots:
+		void editingComplete() { emit editingFinished(); }
 
-  friend class QArvEnumeration;
-  friend class QArvString;
-  friend class QArvFloat;
-  friend class QArvInteger;
-  friend class QArvBoolean;
-  friend class QArvCommand;
-  friend class QArvRegister;
+		friend class QArvEnumeration;
+		friend class QArvString;
+		friend class QArvFloat;
+		friend class QArvInteger;
+		friend class QArvBoolean;
+		friend class QArvCommand;
+		friend class QArvRegister;
 };
 
 //! These types are used by the QArvCamera model and delegate to edit feature node values.
@@ -60,79 +60,79 @@ private slots:
  * highest-level type. Each type also provides its own editing widget.
  */
 struct QArvType {
-  virtual ~QArvType() {}
-  virtual operator QString() const = 0;
-  virtual QArvEditor* createEditor(QWidget* parent = NULL) const = 0;
-  virtual void populateEditor(QWidget* editor) const = 0;
-  virtual void readFromEditor(QWidget* editor) = 0;
+	virtual ~QArvType() {}
+	virtual operator QString() const = 0;
+	virtual QArvEditor* createEditor(QWidget* parent = NULL) const = 0;
+	virtual void populateEditor(QWidget* editor) const = 0;
+	virtual void readFromEditor(QWidget* editor) = 0;
 };
 
 //! \name Types that correspond to types of feature nodes
 /**@{*/
 
 struct QArvEnumeration : QArvType {
-  QList<QString> names;
-  QList<QString> values;
-  QList<bool> isAvailable;
-  int currentValue;
-  QArvEnumeration();
-  operator QString()  const;
-  QArvEditor* createEditor(QWidget* parent) const;
-  void populateEditor(QWidget* editor) const;
-  void readFromEditor(QWidget* editor);
+	QList<QString> names;
+	QList<QString> values;
+	QList<bool> isAvailable;
+	int currentValue;
+	QArvEnumeration();
+	operator QString() const;
+	QArvEditor* createEditor(QWidget* parent) const;
+	void populateEditor(QWidget* editor) const;
+	void readFromEditor(QWidget* editor);
 };
 
 struct QArvString : QArvType {
-  QString value;
-  qint64 maxlength;
-  QArvString();
-  operator QString() const;
-  QArvEditor* createEditor(QWidget* parent) const;
-  void populateEditor(QWidget* editor) const;
-  void readFromEditor(QWidget* editor);
+	QString value;
+	qint64 maxlength;
+	QArvString();
+	operator QString() const;
+	QArvEditor* createEditor(QWidget* parent) const;
+	void populateEditor(QWidget* editor) const;
+	void readFromEditor(QWidget* editor);
 };
 
 struct QArvFloat : QArvType {
-  double value, min, max;
-  QString unit;
-  QArvFloat();
-  operator QString() const;
-  QArvEditor* createEditor(QWidget* parent) const;
-  void populateEditor(QWidget* editor) const;
-  void readFromEditor(QWidget* editor);
+	double value, min, max;
+	QString unit;
+	QArvFloat();
+	operator QString() const;
+	QArvEditor* createEditor(QWidget* parent) const;
+	void populateEditor(QWidget* editor) const;
+	void readFromEditor(QWidget* editor);
 };
 
 struct QArvInteger : QArvType {
-  qint64 value, min, max, inc;
-  operator QString() const;
-  QArvEditor* createEditor(QWidget* parent) const;
-  void populateEditor(QWidget* editor) const;
-  void readFromEditor(QWidget* editor);
+	qint64 value, min, max, inc;
+	operator QString() const;
+	QArvEditor* createEditor(QWidget* parent) const;
+	void populateEditor(QWidget* editor) const;
+	void readFromEditor(QWidget* editor);
 };
 
 struct QArvBoolean : QArvType {
-  bool value;
-  operator QString() const;
-  QArvEditor* createEditor(QWidget* parent) const;
-  void populateEditor(QWidget* editor) const;
-  void readFromEditor(QWidget* editor);
+	bool value;
+	operator QString() const;
+	QArvEditor* createEditor(QWidget* parent) const;
+	void populateEditor(QWidget* editor) const;
+	void readFromEditor(QWidget* editor);
 };
 
 struct QArvCommand : QArvType {
-  operator QString() const;
-  QArvEditor* createEditor(QWidget* parent) const;
-  void populateEditor(QWidget* editor) const;
-  void readFromEditor(QWidget* editor);
+	operator QString() const;
+	QArvEditor* createEditor(QWidget* parent) const;
+	void populateEditor(QWidget* editor) const;
+	void readFromEditor(QWidget* editor);
 };
 
 struct QArvRegister : QArvType {
-  QByteArray value;
-  qint64 length;
-  QArvRegister();
-  operator QString() const;
-  QArvEditor* createEditor(QWidget* parent) const;
-  void populateEditor(QWidget* editor) const;
-  void readFromEditor(QWidget* editor);
+	QByteArray value;
+	qint64 length;
+	QArvRegister();
+	operator QString() const;
+	QArvEditor* createEditor(QWidget* parent) const;
+	void populateEditor(QWidget* editor) const;
+	void readFromEditor(QWidget* editor);
 };
 
 /**@}*/
