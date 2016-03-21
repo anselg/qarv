@@ -117,7 +117,7 @@ class ImageFilterSettingsDialog : public QDockWidget {
 
 }
 
-Q_DECLARE_INTERFACE(QArv::ImageFilterPlugin,"si.ad-vega.qarv.QArvImageFilterPlugin/0.1")
+Q_DECLARE_INTERFACE(QArv::ImageFilterPlugin,"org.qt-project.Qt.QArvImageFilterPlugin")
 Q_DECLARE_METATYPE(QArv::ImageFilterPlugin*)
 Q_DECLARE_METATYPE(QArv::ImageFilter*)
 Q_DECLARE_METATYPE(QArv::ImageFilterSettingsWidget*)
