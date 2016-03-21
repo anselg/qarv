@@ -18,7 +18,7 @@
  */
 
 #include "utils/qarv_videoplayer.h"
-#include "recorders/gstrecorder_implementation.h"
+#include "recorders/gstrecorders/gstrecorder_implementation.h"
 #include "globals.h"
 #include <QFileDialog>
 #include <QPluginLoader>

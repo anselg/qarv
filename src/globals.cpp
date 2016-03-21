@@ -10,6 +10,7 @@ MessageSender QArvDebug::messageSender __attribute__((init_priority(1000)));
 
 MessageSender::MessageSender(): QObject(), connected(false) {}
 
+/*
 void MessageSender::connectNotify(const char * signal)
 {
   QObject::connectNotify(signal);
@@ -25,6 +26,7 @@ void MessageSender::disconnectNotify(const char * signal)
   if (receivers(SIGNAL(newDebugMessage(QString))) < 1)
     connected = false;
 }
+*/
 
 void MessageSender::sendMessage(const QString& message)
 {

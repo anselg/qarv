@@ -18,7 +18,7 @@
  */
 
 
-#include <QtGui/QApplication>
+#include <QApplication>
 #include "api/qarvcamera.h"
 #include "api/qarvgui.h"
 

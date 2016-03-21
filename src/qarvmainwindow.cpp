@@ -33,7 +33,7 @@
 #include <QProcess>
 #include <QTextDocument>
 #include <QStatusBar>
-#include <QtConcurrentRun>
+#include <QtConcurrent/QtConcurrentRun>
 #include <QPluginLoader>
 #include <QMenu>
 #include <QToolButton>
@@ -432,7 +432,7 @@ void QArvMainWindow::on_cameraSelector_currentIndexChanged(int index) {
   readAllValues();
 
   advancedTree->setModel(camera);
-  advancedTree->header()->setResizeMode(QHeaderView::ResizeToContents);
+  advancedTree->header()->setSectionResizeMode(QHeaderView::ResizeToContents);
   advancedTree->setItemDelegate(new QArvCameraDelegate);
 
   autoreadexposure->start();
@@ -495,7 +495,7 @@ void QArvMainWindow::on_applyROIButton_clicked(bool clicked) {
             wSpinbox->value(), hSpinbox->value());
 
   {
-    auto ROI2 = roirange.intersect(ROI);
+    auto ROI2 = roirange.intersected(ROI);
     if (ROI2 != ROI)
       statusBar()->showMessage(tr("Region of interest too large, shrinking."),
                                statusTimeoutMsec);
@@ -1118,7 +1118,7 @@ bool ToolTipToRichTextFilter::eventFilter(QObject* obj, QEvent* evt) {
       if(!Qt::mightBeRichText(tooltip) && tooltip.size() > size_threshold) {
         // Prefix <qt/> to make sure Qt detects this as rich text
         // Escape the current message as HTML and replace \n by <br>
-        tooltip = "<qt/>" + Qt::escape(tooltip);
+        tooltip = "<qt/>" + QString(tooltip).toHtmlEscaped();
         widget->setToolTip(tooltip);
         return true;
       }
