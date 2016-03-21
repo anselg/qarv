@@ -41,8 +41,8 @@ class LevelsFilter : public ImageFilter {
 };
 
 class LevelsPlugin : public QObject, public ImageFilterPlugin {
-		Q_OBJECT
-		Q_INTERFACES(QArv::ImageFilterPlugin)
+	Q_OBJECT
+	Q_INTERFACES(QArv::ImageFilterPlugin)
 
 	public:
 		QString name();
