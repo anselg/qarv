@@ -1,5 +1,9 @@
 project(qarv)
 cmake_minimum_required(VERSION 2.8)
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${Qt5Widgets_EXECUTABLE_COMPILE_FLAGS}")
+set(CMAKE_CXX_FLAGS "-fPIC")
+#set(CMAKE_AUTOMOC ON) # Qt5
+#set(CMAKE_INCLUDE_CURRENT_DIR ON) # Qt5
 
 # Only set the version in release tarballs.
 #set(qarv_VERSION 1.0.99)
@@ -31,13 +35,21 @@ macro(set_prefixed varname string)
   endforeach(name)
 endmacro(set_prefixed)
 
-find_package(Qt4 REQUIRED
-  QtCore
-  QtGui
-  QtOpenGL
-  QtNetwork
-  QtSVG
-)
+find_package(Qt5Core REQUIRED) # Qt5
+find_package(Qt5Gui REQUIRED) # Qt5
+find_package(Qt5Widgets REQUIRED) # Qt5
+find_package(Qt5OpenGL REQUIRED) # Qt5
+find_package(Qt5Network REQUIRED) # Qt5
+find_package(Qt5Svg REQUIRED) # Qt5
+
+#find_package(Qt4 REQUIRED
+#  QtCore
+#  QtGui
+#  QtOpenGL
+#  QtNetwork
+#  QtSVG
+#)
+
 include(FindPkgConfig)
 pkg_search_module(ARAVIS REQUIRED aravis-0.4 aravis-0.2)
 pkg_check_modules(GIO REQUIRED gio-2.0)
@@ -46,17 +58,20 @@ pkg_check_modules(AVCODEC REQUIRED libavcodec)
 pkg_check_modules(AVUTIL REQUIRED libavutil)
 find_package( OpenCV REQUIRED )
 
-include(${QT_USE_FILE})
+# include(${QT_USE_FILE}) # remove for Qt5
 
 include_directories(
-  ${QT_INCLUDES}
+  ${Qt5Widgets_INCLUDE_DIRS}
+  ${Qt5Declarative_INCLUDE_DIRS}
+  ${Qt5OpenGL_INCLUDE_DIRS}
+  ${Qt5Svg_INCLUDE_DIRS}
+  ${Qt5Network_INCLUDE_DIRS} 
   ${CMAKE_CURRENT_BINARY_DIR}
   ${CMAKE_CURRENT_SOURCE_DIR}/src
   ${ARAVIS_INCLUDE_DIRS}
   ${GIO_INCLUDE_DIRS}
   ${AVUTIL_INCLUDE_DIRS}
 )
-
 
 set(qarv_DATA share/qarv/${qarv_ABI}/)
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11 -fvisibility-inlines-hidden -fvisibility=hidden")
@@ -68,10 +83,13 @@ set(CMAKE_CXX_FLAGS_RELWITHDEBINFO "${CMAKE_CXX_FLAGS_RELWITHDEBINFO} -Wall -Wex
 set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -Wall -Wextra -Wno-unused-parameter")
 add_definitions(-DQARV_DATA=\"${CMAKE_INSTALL_PREFIX}/${qarv_DATA}\" -DQT_STATICPLUGIN
   -DQARV_VERSION=\"${qarv_VERSION}\" -DQARV_API=\"${qarv_API}\" -DQARV_ABI=\"${qarv_ABI}\")
+add_definitions(${Qt5Widgets_DEFINITIONS}) # Qt5 
 
 set(CMAKE_REQUIRED_LIBRARIES ${AVUTIL_LDFLAGS})
 set(CMAKE_REQUIRED_INCLUDES ${AVUTIL_INCLUDE_DIRS})
-check_symbol_exists(av_pix_fmt_desc_get libavutil/pixdesc.h HAVE_FMT_DESC_GET)
+
+# check_symbol_exists(av_pix_fmt_desc_get libavutil/pixdesc.h HAVE_FMT_DESC_GET) # remove for Qt5
+
 if (HAVE_FMT_DESC_GET)
   add_definitions(-DHAVE_FMT_DESC_GET)
 endif()
@@ -82,9 +100,9 @@ endif()
 set_prefixed(qarv_UIS_pre src/
   mainwindow.ui
 )
-qt4_wrap_ui(qarv_UIS ${qarv_UIS_pre})
+qt5_wrap_ui(qarv_UIS ${qarv_UIS_pre})
 set_prefixed(qarv_RCS_pre res/ icons/icons.qrc)
-qt4_add_resources(qarv_RCS ${qarv_RCS_pre})
+qt5_add_resources(qarv_RCS ${qarv_RCS_pre})
 set_prefixed(qarv_MOCS src/
   glvideowidget.h
   glhistogramwidget.h
@@ -98,7 +116,7 @@ set_prefixed(qarv_MOCS src/
   api/qarvcameradelegate.h
   filters/filter.h
 )
-qt4_wrap_cpp(qarv_MOCD ${qarv_MOCS})
+qt5_wrap_cpp(qarv_MOCD ${qarv_MOCS})
 set_prefixed(qarv_SRCS src/
   qarvmainwindow.cpp
   main.cpp
@@ -122,7 +140,7 @@ set_prefixed(qarv_decoders_MOCS src/decoders/
   monounpackeddecoders.h
   bayer.h
 )
-qt4_wrap_cpp(qarv_decoders_MOCD ${qarv_decoders_MOCS})
+qt5_wrap_cpp(qarv_decoders_MOCD ${qarv_decoders_MOCS})
 set_prefixed(qarv_decoders_SRC src/decoders/
   graymap.cpp
   mono12packed.cpp
@@ -135,7 +153,7 @@ set_prefixed(qarv_recorders_MOCS src/recorders/
   gstrecorders.h
   imagerecorder.h
 )
-qt4_wrap_cpp(qarv_recorders_MOCD ${qarv_recorders_MOCS})
+qt5_wrap_cpp(qarv_recorders_MOCD ${qarv_recorders_MOCS})
 set_prefixed(qarv_recorders_SRC src/recorders/
   rawrecorders.cpp
   gstrecorders.cpp
@@ -145,16 +163,16 @@ set_prefixed(qarv_recorders_SRC src/recorders/
 set_prefixed(qarv_filters_MOCS src/filters/
   levels.h
 )
-qt4_wrap_cpp(qarv_filters_MOCD ${qarv_filters_MOCS})
+qt5_wrap_cpp(qarv_filters_MOCD ${qarv_filters_MOCS})
 set_prefixed(qarv_filters_SRC src/filters/
   levels.cpp
 )
 set_prefixed(qarv_filters_UIS_pre src/filters/
   levels.ui
 )
-qt4_wrap_ui(qarv_filters_UIS ${qarv_filters_UIS_pre})
+qt5_wrap_ui(qarv_filters_UIS ${qarv_filters_UIS_pre})
 set_prefixed(qarv_TRANS_pre i18n/qarv_ sl.ts)
-qt4_add_translation(qarv_TRANS ${qarv_TRANS_pre})
+# qt5_add_translation(qarv_TRANS ${qarv_TRANS_pre}) # remove for Qt5
 
 set(libqarv "qarv-${qarv_API}")
 add_library(${libqarv} SHARED
@@ -172,7 +190,11 @@ add_library(${libqarv} SHARED
   ${qarv_TRANS}
 )
 target_link_libraries(${libqarv}
-  ${QT_LIBRARIES}
+  ${Qt5Widgets_LIBRARIES}
+  ${Qt5Declarative_LIBRARIES}
+  ${Qt5OpenGL_LIBRARIES}
+  ${Qt5Svg_LIBRARIES}
+  ${Qt5Network_LIBRARIES} 
   ${ARAVIS_LDFLAGS}
   ${GIO_LDFLAGS}
   ${SWSCALE_LDFLAGS}
@@ -183,11 +205,17 @@ target_link_libraries(${libqarv}
 set_target_properties(${libqarv} PROPERTIES SOVERSION ${qarv_ABI})
 
 add_executable(qarvexe src/main.cpp)
-target_link_libraries(qarvexe ${QT_LIBRARIES} ${libqarv})
+target_link_libraries(qarvexe 
+  ${Qt5Widgets_LIBRARIES} 
+  ${Qt5OpenGL_LIBRARIES} 
+  ${Qt5Svg_LIBRARIES} 
+  ${Qt5Network_LIBRARIES} 
+  ${libqarv}
+)
 set_target_properties(qarvexe PROPERTIES OUTPUT_NAME qarv)
 
-qt4_wrap_ui(qarv_videoplayer_UI src/utils/qarv_videoplayer.ui)
-qt4_wrap_cpp(qarv_videoplayer_MOC
+qt5_wrap_ui(qarv_videoplayer_UI src/utils/qarv_videoplayer.ui)
+qt5_wrap_cpp(qarv_videoplayer_MOC
   src/utils/qarv_videoplayer.h
   src/glvideowidget.h
   src/globals.h
@@ -201,7 +229,13 @@ add_executable(qarv_videoplayer
   ${qarv_videoplayer_MOC}
   ${qarv_videoplayer_UI}
 )
-target_link_libraries(qarv_videoplayer ${QT_LIBRARIES} ${libqarv})
+target_link_libraries(qarv_videoplayer 
+  ${Qt5Widgets_LIBRARIES} 
+  ${Qt5OpenGL_LIBRARIES} 
+  ${Qt5Svg_LIBRARIES} 
+  ${Qt5Network_LIBRARIES} 
+  ${libqarv}
+)
 
 set_prefixed(qarv_ICONS res/icons/
   document-open.svgz
