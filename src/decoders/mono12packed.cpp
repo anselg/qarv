@@ -71,6 +71,6 @@ QByteArray Mono12PackedDecoder::decoderSpecification() {
 	return b;
 }
 
-
-Q_EXPORT_PLUGIN2(Mono12Packed, Mono12PackedFormat)
-Q_IMPORT_PLUGIN(Mono12Packed)
+Q_PLUGIN_METADATA(IID "org.qt-project.Qt.QArvPixelFormat")
+//Q_EXPORT_PLUGIN2(Mono12Packed, Mono12PackedFormat)
+Q_IMPORT_PLUGIN(Mono12PackedFormat)

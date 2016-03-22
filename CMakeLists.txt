@@ -137,17 +137,79 @@ set_prefixed(qarv_SRCS src/
 )
 set_prefixed(qarv_decoders_MOCS src/decoders/
   mono12packed.h
-  monounpackeddecoders.h
-  bayer.h
+  mono/mono8.h
+  mono/mono8signed.h
+  mono/mono10.h
+  mono/mono12.h
+  mono/mono14.h
+  mono/mono16.h
+  bayer/bayerbg8.h
+  bayer/bayerbg10.h
+  bayer/bayerbg12.h
+  bayer/bayerbg12_packed.h
+  bayer/bayerbg16.h
+  bayer/bayergb8.h
+  bayer/bayergb10.h
+  bayer/bayergb12.h
+  bayer/bayergb12_packed.h
+  bayer/bayergb16.h
+  bayer/bayergr8.h
+  bayer/bayergr10.h
+  bayer/bayergr12.h
+  bayer/bayergr12_packed.h
+  bayer/bayergr16.h
+  bayer/bayerrg8.h
+  bayer/bayerrg10.h
+  bayer/bayerrg12.h
+  bayer/bayerrg12_packed.h
+  bayer/bayerrg16.h
 )
+#set_prefixed(qarv_decoders_MOCS src/decoders/
+#  mono12packed.h
+#  monounpackeddecoders.h
+#  bayer.h
+#)
 qt5_wrap_cpp(qarv_decoders_MOCD ${qarv_decoders_MOCS})
 set_prefixed(qarv_decoders_SRC src/decoders/
   graymap.cpp
   mono12packed.cpp
-  monounpackeddecoders.cpp
   swscaledecoder.cpp
-  bayer.cpp
 )
+
+#  mono/mono8.cpp
+#  mono/mono8signed.cpp
+#  mono/mono10.cpp
+#  mono/mono12.cpp
+#  mono/mono14.cpp
+#  mono/mono16.cpp
+#  bayer/bayerbg8.cpp
+#  bayer/bayerbg10.cpp
+#  bayer/bayerbg12.cpp
+#  bayer/bayerbg12_packed.cpp
+#  bayer/bayerbg16.cpp
+#  bayer/bayergb8.cpp
+#  bayer/bayergb10.cpp
+#  bayer/bayergb12.cpp
+#  bayer/bayergb12_packed.cpp
+#  bayer/bayergb16.cpp
+#  bayer/bayergr8.cpp
+#  bayer/bayergr10.cpp
+#  bayer/bayergr12.cpp
+#  bayer/bayergr12_packed.cpp
+#  bayer/bayergr16.cpp
+#  bayer/bayerrg8.cpp
+#  bayer/bayerrg10.cpp
+#  bayer/bayerrg12.cpp
+#  bayer/bayerrg12_packed.cpp
+#  bayer/bayerrg16.cpp
+
+#set_prefixed(qarv_decoders_SRC src/decoders/
+#  graymap.cpp
+#  mono12packed.cpp
+#  monounpackeddecoders.cpp
+#  swscaledecoder.cpp
+#  bayer.cpp
+#)
 set_prefixed(qarv_recorders_MOCS src/recorders/
   rawrecorders/rawdecoded16.h
   rawrecorders/rawdecoded8.h
@@ -238,7 +300,6 @@ qt5_wrap_cpp(qarv_videoplayer_MOC
 add_executable(qarv_videoplayer
   src/utils/qarv_videoplayer.cpp
   src/glvideowidget.cpp
-  src/globals.cpp
   src/recorders/gstrecorders/gstrecorder_implementation.cpp
   src/globals.cpp
   ${qarv_videoplayer_MOC}

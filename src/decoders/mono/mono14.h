@@ -17,42 +17,30 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef MONO12PACKED_H
-#define MONO12PACKED_H
+#ifndef MONO14_H
+#define MONO14_H
 
-#include "api/qarvdecoder.h"
+#include "decoders/monounpacked.h"
 extern "C" {
-	#include <arvenums.h>
+  #include <arvenums.h>
 }
 
 namespace QArv {
 
-class Mono12PackedDecoder : public QArvDecoder {
-	public:
-		Mono12PackedDecoder(QSize size_);
-		void decode(QByteArray frame);
-		const cv::Mat getCvImage();
-		int cvType() { return CV_16UC1; }
-		ArvPixelFormat pixelFormat() { return ARV_PIXEL_FORMAT_MONO_12_PACKED; }
-		QByteArray decoderSpecification();
-
-	private:
-		QSize size;
-		cv::Mat M;
-};
-
-class Mono12PackedFormat : public QObject, public QArvPixelFormat {
+class Mono14Format : public QObject, public QArvPixelFormat {
 	Q_OBJECT
 	Q_INTERFACES(QArvPixelFormat)
 	Q_PLUGIN_METADATA(IID "org.qt-project.Qt.QArvPixelFormat")
-
+	
 	public:
-		ArvPixelFormat pixelFormat() { return ARV_PIXEL_FORMAT_MONO_12_PACKED; }
-		QArvDecoder* makeDecoder(QSize size) {
-			return new Mono12PackedDecoder(size);
+		ArvPixelFormat pixelFormat() { return ARV_PIXEL_FORMAT_MONO_14; }
+		QArvDecoder* makeDecoder(QSize size) { 
+			return new MonoUnpackedDecoder<uint16_t, 14, ARV_PIXEL_FORMAT_MONO_14>(size); 
 		}
 };
 
 }
+
+Q_IMPORT_PLUGIN(Mono14Format)
 
 #endif

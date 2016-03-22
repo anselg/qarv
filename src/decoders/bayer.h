@@ -27,6 +27,31 @@ extern "C" {
 	#include <arvenums.h>
 }
 
+/*
+#include "decoders/bayer/bayerbg8.h"
+#include "decoders/bayer/bayerbg10.h"
+#include "decoders/bayer/bayerbg12.h"
+#include "decoders/bayer/bayerbg12_packed.h"
+#include "decoders/bayer/bayerbg16.h"
+
+#include "decoders/bayer/bayergb8.h"
+#include "decoders/bayer/bayergb10.h"
+#include "decoders/bayer/bayergb12.h"
+#include "decoders/bayer/bayergb12_packed.h"
+#include "decoders/bayer/bayergb16.h"
+
+#include "decoders/bayer/bayergr8.h"
+#include "decoders/bayer/bayergr10.h"
+#include "decoders/bayer/bayergr12.h"
+#include "decoders/bayer/bayergr12_packed.h"
+#include "decoders/bayer/bayergr16.h"
+
+#include "decoders/bayer/bayerrg8.h"
+#include "decoders/bayer/bayerrg10.h"
+#include "decoders/bayer/bayerrg12.h"
+#include "decoders/bayer/bayerrg12_packed.h"
+#include "decoders/bayer/bayerrg16.h"
+*/
 
 // Some formats appeared only after aravis-0.2.0, so
 // we check for their presence. The 12_PACKED formats
@@ -196,10 +221,11 @@ class BayerDecoder: public QArvDecoder {
 };
 
 // 8-bit
-
+/*
 class BayerGR8 : public QObject, public QArvPixelFormat {
 	Q_OBJECT
 	Q_INTERFACES(QArvPixelFormat)
+	Q_PLUGIN_METADATA(IID "org.qt-project.Qt.QArvPixelFormat")
 
 	public:
 		ArvPixelFormat pixelFormat() { return ARV_PIXEL_FORMAT_BAYER_GR_8; }
@@ -211,6 +237,7 @@ class BayerGR8 : public QObject, public QArvPixelFormat {
 class BayerRG8 : public QObject, public QArvPixelFormat {
 	Q_OBJECT
 	Q_INTERFACES(QArvPixelFormat)
+	Q_PLUGIN_METADATA(IID "org.qt-project.Qt.QArvPixelFormat")
 
 	public:
 		ArvPixelFormat pixelFormat() { return ARV_PIXEL_FORMAT_BAYER_RG_8; }
@@ -222,6 +249,7 @@ class BayerRG8 : public QObject, public QArvPixelFormat {
 class BayerGB8 : public QObject, public QArvPixelFormat {
 	Q_OBJECT
 	Q_INTERFACES(QArvPixelFormat)
+	Q_PLUGIN_METADATA(IID "org.qt-project.Qt.QArvPixelFormat")
 
 	public:
 		ArvPixelFormat pixelFormat() { return ARV_PIXEL_FORMAT_BAYER_GB_8; }
@@ -233,6 +261,7 @@ class BayerGB8 : public QObject, public QArvPixelFormat {
 class BayerBG8 : public QObject, public QArvPixelFormat {
 	Q_OBJECT
 	Q_INTERFACES(QArvPixelFormat)
+	Q_PLUGIN_METADATA(IID "org.qt-project.Qt.QArvPixelFormat")
 
 	public:
 		ArvPixelFormat pixelFormat() { return ARV_PIXEL_FORMAT_BAYER_BG_8; }
@@ -246,6 +275,7 @@ class BayerBG8 : public QObject, public QArvPixelFormat {
 class BayerGR10 : public QObject, public QArvPixelFormat {
 	Q_OBJECT
 	Q_INTERFACES(QArvPixelFormat)
+	Q_PLUGIN_METADATA(IID "org.qt-project.Qt.QArvPixelFormat")
 
 	public:
 		ArvPixelFormat pixelFormat() { return ARV_PIXEL_FORMAT_BAYER_GR_10; }
@@ -257,6 +287,7 @@ class BayerGR10 : public QObject, public QArvPixelFormat {
 class BayerRG10 : public QObject, public QArvPixelFormat {
 	Q_OBJECT
 	Q_INTERFACES(QArvPixelFormat)
+	Q_PLUGIN_METADATA(IID "org.qt-project.Qt.QArvPixelFormat")
 
 	public:
 		ArvPixelFormat pixelFormat() { return ARV_PIXEL_FORMAT_BAYER_RG_10; }
@@ -268,6 +299,7 @@ class BayerRG10 : public QObject, public QArvPixelFormat {
 class BayerGB10 : public QObject, public QArvPixelFormat {
 	Q_OBJECT
 	Q_INTERFACES(QArvPixelFormat)
+	Q_PLUGIN_METADATA(IID "org.qt-project.Qt.QArvPixelFormat")
 
 	public:
 		ArvPixelFormat pixelFormat() { return ARV_PIXEL_FORMAT_BAYER_GB_10; }
@@ -279,6 +311,7 @@ class BayerGB10 : public QObject, public QArvPixelFormat {
 class BayerBG10 : public QObject, public QArvPixelFormat {
 	Q_OBJECT
 	Q_INTERFACES(QArvPixelFormat)
+	Q_PLUGIN_METADATA(IID "org.qt-project.Qt.QArvPixelFormat")
 
 	public:
 		ArvPixelFormat pixelFormat() { return ARV_PIXEL_FORMAT_BAYER_BG_10; }
@@ -292,6 +325,7 @@ class BayerBG10 : public QObject, public QArvPixelFormat {
 class BayerGR12 : public QObject, public QArvPixelFormat {
 	Q_OBJECT
 	Q_INTERFACES(QArvPixelFormat)
+	Q_PLUGIN_METADATA(IID "org.qt-project.Qt.QArvPixelFormat")
 
 	public:
 		ArvPixelFormat pixelFormat() { return ARV_PIXEL_FORMAT_BAYER_GR_12; }
@@ -303,6 +337,7 @@ class BayerGR12 : public QObject, public QArvPixelFormat {
 class BayerRG12 : public QObject, public QArvPixelFormat {
 	Q_OBJECT
 	Q_INTERFACES(QArvPixelFormat)
+	Q_PLUGIN_METADATA(IID "org.qt-project.Qt.QArvPixelFormat")
 
 	public:
 		ArvPixelFormat pixelFormat() { return ARV_PIXEL_FORMAT_BAYER_RG_12; }
@@ -314,6 +349,7 @@ class BayerRG12 : public QObject, public QArvPixelFormat {
 class BayerGB12 : public QObject, public QArvPixelFormat {
 	Q_OBJECT
 	Q_INTERFACES(QArvPixelFormat)
+	Q_PLUGIN_METADATA(IID "org.qt-project.Qt.QArvPixelFormat")
 
 	public:
 		ArvPixelFormat pixelFormat() { return ARV_PIXEL_FORMAT_BAYER_GB_12; }
@@ -325,6 +361,7 @@ class BayerGB12 : public QObject, public QArvPixelFormat {
 class BayerBG12 : public QObject, public QArvPixelFormat {
 	Q_OBJECT
 	Q_INTERFACES(QArvPixelFormat)
+	Q_PLUGIN_METADATA(IID "org.qt-project.Qt.QArvPixelFormat")
 
 	public:
 		ArvPixelFormat pixelFormat() { return ARV_PIXEL_FORMAT_BAYER_BG_12; }
@@ -340,6 +377,7 @@ class BayerBG12 : public QObject, public QArvPixelFormat {
 class BayerGR12_PACKED : public QObject, public QArvPixelFormat {
 	Q_OBJECT
 	Q_INTERFACES(QArvPixelFormat)
+	Q_PLUGIN_METADATA(IID "org.qt-project.Qt.QArvPixelFormat")
 
 	public:
 		ArvPixelFormat pixelFormat() { return ARV_PIXEL_FORMAT_BAYER_GR_12_PACKED; }
@@ -355,6 +393,7 @@ class BayerGR12_PACKED : public QObject, public QArvPixelFormat {
 class BayerRG12_PACKED : public QObject, public QArvPixelFormat {
 	Q_OBJECT
 	Q_INTERFACES(QArvPixelFormat)
+	Q_PLUGIN_METADATA(IID "org.qt-project.Qt.QArvPixelFormat")
 
 	public:
 		ArvPixelFormat pixelFormat() { return ARV_PIXEL_FORMAT_BAYER_RG_12_PACKED; }
@@ -370,6 +409,7 @@ class BayerRG12_PACKED : public QObject, public QArvPixelFormat {
 class BayerGB12_PACKED : public QObject, public QArvPixelFormat {
 	Q_OBJECT
 	Q_INTERFACES(QArvPixelFormat)
+	Q_PLUGIN_METADATA(IID "org.qt-project.Qt.QArvPixelFormat")
 
 	public:
 		ArvPixelFormat pixelFormat() { return ARV_PIXEL_FORMAT_BAYER_GB_12_PACKED; }
@@ -383,6 +423,7 @@ class BayerGB12_PACKED : public QObject, public QArvPixelFormat {
 class BayerBG12_PACKED : public QObject, public QArvPixelFormat {
 	Q_OBJECT
 	Q_INTERFACES(QArvPixelFormat)
+	Q_PLUGIN_METADATA(IID "org.qt-project.Qt.QArvPixelFormat")
 
 	public:
 		ArvPixelFormat pixelFormat() { return ARV_PIXEL_FORMAT_BAYER_BG_12_PACKED; }
@@ -398,6 +439,7 @@ class BayerBG12_PACKED : public QObject, public QArvPixelFormat {
 class BayerGR16 : public QObject, public QArvPixelFormat {
 	Q_OBJECT
 	Q_INTERFACES(QArvPixelFormat)
+	Q_PLUGIN_METADATA(IID "org.qt-project.Qt.QArvPixelFormat")
 
 	public:
 		ArvPixelFormat pixelFormat() { return ARV_PIXEL_FORMAT_BAYER_GR_16; }
@@ -409,6 +451,7 @@ class BayerGR16 : public QObject, public QArvPixelFormat {
 class BayerRG16 : public QObject, public QArvPixelFormat {
 	Q_OBJECT
 	Q_INTERFACES(QArvPixelFormat)
+	Q_PLUGIN_METADATA(IID "org.qt-project.Qt.QArvPixelFormat")
 
 	public:
 		ArvPixelFormat pixelFormat() { return ARV_PIXEL_FORMAT_BAYER_RG_16; }
@@ -420,6 +463,7 @@ class BayerRG16 : public QObject, public QArvPixelFormat {
 class BayerGB16 : public QObject, public QArvPixelFormat {
 	Q_OBJECT
 	Q_INTERFACES(QArvPixelFormat)
+	Q_PLUGIN_METADATA(IID "org.qt-project.Qt.QArvPixelFormat")
 
 public:
 	ArvPixelFormat pixelFormat() { return ARV_PIXEL_FORMAT_BAYER_GB_16; }
@@ -431,6 +475,7 @@ public:
 class BayerBG16 : public QObject, public QArvPixelFormat {
 	Q_OBJECT
 	Q_INTERFACES(QArvPixelFormat)
+	Q_PLUGIN_METADATA(IID "org.qt-project.Qt.QArvPixelFormat")
 
 	public:
 		ArvPixelFormat pixelFormat() { return ARV_PIXEL_FORMAT_BAYER_BG_16; }
@@ -440,7 +485,7 @@ class BayerBG16 : public QObject, public QArvPixelFormat {
 };
 
 #endif
+*/
 
 }
-
 #endif
