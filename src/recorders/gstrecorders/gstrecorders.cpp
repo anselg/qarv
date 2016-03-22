@@ -36,4 +36,4 @@ Recorder* HuffyuvAviFormat::makeRecorder(QArvDecoder* decoder,
 Q_PLUGIN_METADATA(IID "org.qt-project.Qt.QArvOutputFormat")
 
 //Q_EXPORT_PLUGIN2(HuffyuvAvi, QArv::HuffyuvAviFormat)
-Q_IMPORT_PLUGIN(HuffyuvAvi)
+Q_IMPORT_PLUGIN(HuffyuvAviFormat)

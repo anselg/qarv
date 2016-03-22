@@ -129,4 +129,4 @@ Recorder* RawDecoded16Format::makeRecorder(QArvDecoder* decoder,
 
 Q_PLUGIN_METADATA(IID "org.qt-project.Qt.QArvOutputFormat")
 //Q_EXPORT_PLUGIN2(RawDecoded16, QArv::RawDecoded16Format)
-Q_IMPORT_PLUGIN(RawDecoded16)
+Q_IMPORT_PLUGIN(RawDecoded16Format)

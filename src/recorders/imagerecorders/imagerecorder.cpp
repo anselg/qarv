@@ -70,4 +70,4 @@ Recorder* ImageFormat::makeRecorder(QArvDecoder* decoder,
 Q_PLUGIN_METADATA(IID "org.qt-project.Qt.QArvOutputFormat")
 
 //Q_EXPORT_PLUGIN2(ImageRecorder, QArv::ImageFormat)
-Q_IMPORT_PLUGIN(ImageRecorder)
+Q_IMPORT_PLUGIN(ImageFormat)

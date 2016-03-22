@@ -107,6 +107,5 @@ Recorder* RawUndecodedFormat::makeRecorder(QArvDecoder* decoder,
 }
 
 Q_PLUGIN_METADATA(IID "org.qt-project.Qt.QArvOutputFormat")
-
 //Q_EXPORT_PLUGIN2(RawUndecoded, QArv::RawUndecodedFormat)
-Q_IMPORT_PLUGIN(RawUndecoded)
+Q_IMPORT_PLUGIN(RawUndecodedFormat)
