@@ -17,6 +17,9 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
+#ifndef MONOUNPACKEDDECODER_H
+#define MONOUNPACKEDDECODER_H
+
 #include "decoders/monounpacked.h"
 extern "C" {
   #include <arvenums.h>
@@ -27,6 +30,8 @@ namespace QArv {
 class Mono8Format : public QObject, public QArvPixelFormat {
 	Q_OBJECT
 	Q_INTERFACES(QArvPixelFormat)
+	Q_PLUGIN_METADATA(IID "org.qt-project.Qt.QArvPixelFormat")
+	
 	public:
 		ArvPixelFormat pixelFormat() { return ARV_PIXEL_FORMAT_MONO_8; }
 		QArvDecoder* makeDecoder(QSize size) { 
@@ -47,6 +52,8 @@ class Mono8SignedFormat : public QObject, public QArvPixelFormat {
 class Mono10Format : public QObject, public QArvPixelFormat {
 	Q_OBJECT
 	Q_INTERFACES(QArvPixelFormat)
+	Q_PLUGIN_METADATA(IID "org.qt-project.Qt.QArvPixelFormat")
+	
 	public:
 		ArvPixelFormat pixelFormat() { return ARV_PIXEL_FORMAT_MONO_10; }
 		QArvDecoder* makeDecoder(QSize size) { 
@@ -57,6 +64,8 @@ class Mono10Format : public QObject, public QArvPixelFormat {
 class Mono12Format : public QObject, public QArvPixelFormat {
 	Q_OBJECT
 	Q_INTERFACES(QArvPixelFormat)
+	Q_PLUGIN_METADATA(IID "org.qt-project.Qt.QArvPixelFormat")
+	
 	public:
 		ArvPixelFormat pixelFormat() { return ARV_PIXEL_FORMAT_MONO_12; }
 		QArvDecoder* makeDecoder(QSize size) { 
@@ -67,6 +76,8 @@ class Mono12Format : public QObject, public QArvPixelFormat {
 class Mono14Format : public QObject, public QArvPixelFormat {
 	Q_OBJECT
 	Q_INTERFACES(QArvPixelFormat)
+	Q_PLUGIN_METADATA(IID "org.qt-project.Qt.QArvPixelFormat")
+	
 	public:
 		ArvPixelFormat pixelFormat() { return ARV_PIXEL_FORMAT_MONO_14; }
 		QArvDecoder* makeDecoder(QSize size) { 
@@ -77,6 +88,8 @@ class Mono14Format : public QObject, public QArvPixelFormat {
 class Mono16Format : public QObject, public QArvPixelFormat {
 	Q_OBJECT
 	Q_INTERFACES(QArvPixelFormat)
+	Q_PLUGIN_METADATA(IID "org.qt-project.Qt.QArvPixelFormat")
+
 	public:
 		ArvPixelFormat pixelFormat() { return ARV_PIXEL_FORMAT_MONO_16; }
 		QArvDecoder* makeDecoder(QSize size) { 
@@ -85,3 +98,5 @@ class Mono16Format : public QObject, public QArvPixelFormat {
 };
 
 }
+
+#endif
