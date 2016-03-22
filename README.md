@@ -1,6 +1,8 @@
 qarv - a Qt interface to Aravis
 ===============================
 
+![qarv UI](qarv-ui.png)
+
 DESCRIPTION
 -----------
 
@@ -75,7 +77,7 @@ Aravis:     https://live.gnome.org/Aravis
 REQUIREMENTS AND INSTALLATION
 -----------------------------
 
-qarv requires Qt-4.8, aravis-0.2, OpenCV and either libav or ffmpeg.
+qarv requires Qt-4.8, aravis-0.3.8, OpenCV and either libav or ffmpeg.
 
 Optionally, gstreamer-1.0 with the base, good, bad and libav plugin
 sets allows recording and transcoding to AVI and other non-raw formats.
@@ -105,11 +107,10 @@ LICENSING INFORMATION
 ---------------------
 
 qarv is provided under the GNU General Public License, version 3 or
-later. See COPYING for more information.
+later. See LICENSE for more information.
 
 The icons included with qarv are part of the oxygen theme from the KDE
-project (www.kde.org). See res/icons/COPYING for licensing
-information.
+project (www.kde.org). See res/icons/LICENSE for licensing information.
 
 The qarv icon itself is derived from the oxygen theme as well.
 
