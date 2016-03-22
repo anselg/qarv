@@ -11,73 +11,73 @@ Aravis library.
 
 For a user, qarv provides:
 
-    - Viewing the video, recording it and taking snapshots, with basic
-      controls, such as frames-per-second, pixel format and
-      exposure/gain easily accessible. Region-of-interest can be
-      selected via manual entry or by drawing it directly in the video
-      display.
+ - Viewing the video, recording it and taking snapshots, with basic
+   controls, such as frames-per-second, pixel format and
+   exposure/gain easily accessible. Region-of-interest can be
+   selected via manual entry or by drawing it directly in the video
+   display.
 
-    - A viewer and transcoder for raw video dumps recorded with qarv.
+ - A viewer and transcoder for raw video dumps recorded with qarv.
 
-    - The network interface used by the camera is automatically
-      detected and camera's packet size is set to match the interface
-      MTU, providing usable (hopefully) performance with minimal
-      interaction, unlike the default settings on some cameras.
+ - The network interface used by the camera is automatically
+   detected and camera's packet size is set to match the interface
+   MTU, providing usable (hopefully) performance with minimal
+   interaction, unlike the default settings on some cameras.
 
-    - Full access to all camera features is available in a tree view.
-      Settings can be saved and restored, subject to some limitations.
+ - Full access to all camera features is available in a tree view.
+   Settings can be saved and restored, subject to some limitations.
 
-    - Basic image transformations: mirroring, rotating, inverting.
+ - Basic image transformations: mirroring, rotating, inverting.
 
-    - Histogram; clipped highlights can be marked in the video
-      display.
+ - Histogram; clipped highlights can be marked in the video
+   display.
 
 
 For a programmer, qarv provides:
 
-    - QArvCamera class which isolates the Qt program from Aravis
-      internals, thus avoiding clashes between Qt and Glib/GTK. It
-      provides direct access to basic settings and emits signals when
-      frames are ready. To access features not covered by the basic
-      interface, it implements the QAbstractItemModel interface. This
-      interface allows access to camera features using Qt's Model/View
-      paradigm. The QArvCamera model can thus be plugged directly into
-      a "view" widget, as is done in our GUI.
+ - QArvCamera class which isolates the Qt program from Aravis
+   internals, thus avoiding clashes between Qt and Glib/GTK. It
+   provides direct access to basic settings and emits signals when
+   frames are ready. To access features not covered by the basic
+   interface, it implements the QAbstractItemModel interface. This
+   interface allows access to camera features using Qt's Model/View
+   paradigm. The QArvCamera model can thus be plugged directly into
+   a "view" widget, as is done in our GUI.
 
-    - QArvCameraDelegate class which implements the
-      QStyledItemDelegate interface. It can be used with the
-      QArvCamera model to get editing widgets for camera features.
+ - QArvCameraDelegate class which implements the
+   QStyledItemDelegate interface. It can be used with the
+   QArvCamera model to get editing widgets for camera features.
 
-    - QArvGui class provides a camera control window that can be
-      embedded into a host application. It is the same as the
-      standalone application; in fact, the latter is simply a minimal
-      host application. The difference is in the recording
-      functionality: instead of recording to a file, the GUI will emit
-      signals and pass frames to the host application.
+ - QArvGui class provides a camera control window that can be
+   embedded into a host application. It is the same as the
+   standalone application; in fact, the latter is simply a minimal
+   host application. The difference is in the recording
+   functionality: instead of recording to a file, the GUI will emit
+   signals and pass frames to the host application.
 
-    - QArvDecoder and QArvPixelFormat, which are plugin interfaces for
-      converting a raw frame into an OpenCV image. Convenience
-      functions are available to obtain QImages. Currently provided
-      are decoders for 8, 10, 12 (packed or unpacked) and 16 bit
-      grayscale formats, plus anything supported by libav/ffmpeg. The
-      libav plugin is exposed further to allow easy decoding of all
-      pixel formats, not just those used by Aravis.
+ - QArvDecoder and QArvPixelFormat, which are plugin interfaces for
+   converting a raw frame into an OpenCV image. Convenience
+   functions are available to obtain QImages. Currently provided
+   are decoders for 8, 10, 12 (packed or unpacked) and 16 bit
+   grayscale formats, plus anything supported by libav/ffmpeg. The
+   libav plugin is exposed further to allow easy decoding of all
+   pixel formats, not just those used by Aravis.
 
-    - QArvRecordedVideo class, which can read a raw video dumped by
-      the qarv GUI and generate a QArvDecoder for decoding the frames.
+ - QArvRecordedVideo class, which can read a raw video dumped by
+   the qarv GUI and generate a QArvDecoder for decoding the frames.
 
-    - All of this is provided as libqarv, with headers installed in a
-      standard location, such as /usr/include/qarv-1/.
+ - All of this is provided as libqarv, with headers installed in a
+   standard location, such as /usr/include/qarv-1/.
 
-Homepage:   http://www.ad-vega.si/software/qarv
-Repository: http://gitorious.org/adv/qarv/
-Aravis:     https://live.gnome.org/Aravis
+Homepage:   http://www.ad-vega.si/software/qarv  
+Repository: http://gitorious.org/adv/qarv/  
+Aravis:     https://live.gnome.org/Aravis  
 
 
 REQUIREMENTS AND INSTALLATION
 -----------------------------
 
-qarv requires Qt-4.8, aravis-0.3.8, OpenCV and either libav or ffmpeg.
+qarv requires Qt-5.5, aravis-0.3.8, OpenCV and either libav or ffmpeg.
 
 Optionally, gstreamer-1.0 with the base, good, bad and libav plugin
 sets allows recording and transcoding to AVI and other non-raw formats.
@@ -88,20 +88,23 @@ qarv is built using CMake. If you are not familiar with CMake, refer
 to any tutorial. But for starters, run these commands from the qarv
 source directory:
 
+```
   mkdir build
   cd build
   cmake ..
   make
   sudo make install
+```
 
 You can skip the "make install" step and run qarv from the build
 directory directly, although there might be problems with localization
 and icon loading.
 
-API documentation can be generated when Doxygen is installed by running
+API documentation can be generated when Doxygen is installed by running: 
 
+```
   make doc
-
+```
 
 LICENSING INFORMATION
 ---------------------
