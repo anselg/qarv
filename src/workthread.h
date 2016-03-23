@@ -1,20 +1,20 @@
 /*
-    QArv, a Qt interface to aravis.
-    Copyright (C) 2012-2014 Jure Varlec <jure.varlec@ad-vega.si>
-                            Andrej Lajovic <andrej.lajovic@ad-vega.si>
-
-    This program is free software: you can redistribute it and/or modify
-    it under the terms of the GNU General Public License as published by
-    the Free Software Foundation, either version 3 of the License, or
-    (at your option) any later version.
-
-    This program is distributed in the hope that it will be useful,
-    but WITHOUT ANY WARRANTY; without even the implied warranty of
-    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-    GNU General Public License for more details.
-
-    You should have received a copy of the GNU General Public License
-    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ * QArv, a Qt interface to aravis.
+ * Copyright (C) 2012-2014 Jure Varlec <jure.varlec@ad-vega.si>
+ * Andrej Lajovic <andrej.lajovic@ad-vega.si>
+ *
+ * This program is free software: you can redistribute it and/or modify 
+ * it under the terms of the GNU General Public License as published by 
+ * the Free Software Foundation, either version 3 of the License, or 
+ * (at your option) any later version. 
+ *
+ * This program is distributed in the hope that it will be useful, 
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of 
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the 
+ * GNU General Public License for more details. 
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
 /*
@@ -51,129 +51,129 @@ class ImageFilter;
 class Histograms;
 
 class Cooker: public QObject {
-  Q_OBJECT
+	Q_OBJECT
 
-  friend class Workthread;
-  explicit Cooker(QObject* parent = 0);
+	friend class Workthread;
+	explicit Cooker(QObject* parent = 0);
 
-  struct Parameters {
-    bool imageTransform_invert = false;
-    int imageTransform_flip = 0;
-    int imageTransform_rot = 0;
-    QList<ImageFilterPtr> filterChain;
-    QArvDecoder* decoder = nullptr;
-    QFile* timestampFile = nullptr;
-    Recorder* recorder = nullptr;
-  };
+	struct Parameters {
+		bool imageTransform_invert = false;
+		int imageTransform_flip = 0;
+		int imageTransform_rot = 0;
+		QList<ImageFilterPtr> filterChain;
+		QArvDecoder* decoder = nullptr;
+		QFile* timestampFile = nullptr;
+		Recorder* recorder = nullptr;
+	};
 
-private slots:
-  void processEvents();
+	private slots:
+		void processEvents();
 
-  void returnCamera(QArvCamera* camera, QThread* thread);
+		void returnCamera(QArvCamera* camera, QThread* thread);
 
-  void cameraAcquisition(QArvCamera* camera, bool start,
-                         bool zeroCopy, bool dropInvalidFrames);
+		void cameraAcquisition(QArvCamera* camera, bool start,
+		                       bool zeroCopy, bool dropInvalidFrames);
 
-  void processFrame(QByteArray frame, ArvBuffer* aravisFrame);
+		void processFrame(QByteArray frame, ArvBuffer* aravisFrame);
 
-  void setImageTransform(bool imageTransform_invert,
-                         int imageTransform_flip,
-                         int imageTransform_rot);
+		void setImageTransform(bool imageTransform_invert,
+		                       int imageTransform_flip,
+		                       int imageTransform_rot);
 
-  void setFilterChain(QList<QArv::ImageFilterPtr> filterChain);
+		void setFilterChain(QList<QArv::ImageFilterPtr> filterChain);
 
-  void setRecorder(QArv::Recorder* recorder, QFile* timestampFile, int maxFrames);
+		void setRecorder(QArv::Recorder* recorder, QFile* timestampFile, int maxFrames);
 
-signals:
-  void frameCooked(cv::Mat frame);
-  void frameToRender(cv::Mat frame);
-  void recordingStopped();
+	signals:
+		void frameCooked(cv::Mat frame);
+		void frameToRender(cv::Mat frame);
+		void recordingStopped();
 
-private:
-  void getFps(uint* fps);
+	private:
+		void getFps(uint* fps);
 
-  Parameters p;
-  cv::Mat processedFrame;
-  std::atomic_bool doRender;
-  int maxRecordedFrames;
-  int recordedFrames;
-  std::atomic<uint> receivedFrames;
-  uint lastFpsRequestFrames;
-  QTime lastFpsRequest;
-};
+		Parameters p;
+		cv::Mat processedFrame;
+		std::atomic_bool doRender;
+		int maxRecordedFrames;
+		int recordedFrames;
+		std::atomic<uint> receivedFrames;
+		uint lastFpsRequestFrames;
+		QTime lastFpsRequest;
+	};
 
-class Renderer: public QObject {
-  Q_OBJECT
+	class Renderer: public QObject {
+		Q_OBJECT
 
-  friend class Workthread;
-  explicit Renderer(QObject* parent = 0);
+		friend class Workthread;
+		explicit Renderer(QObject* parent = 0);
 
-private slots:
-  void renderFrame(cv::Mat frame);
-  void processEvents();
+	private slots:
+		void renderFrame(cv::Mat frame);
+		void processEvents();
 
-signals:
-  void frameRendered();
+	signals:
+		void frameRendered();
 
-private:
-  QImage* destinationImage;
-  bool markClipped;
-  Histograms* hists;
-  bool logarithmic;
-};
+	private:
+		QImage* destinationImage;
+		bool markClipped;
+		Histograms* hists;
+		bool logarithmic;
+	};
 
-class Workthread: public QObject {
-  Q_OBJECT
+	class Workthread: public QObject {
+		Q_OBJECT
 
-public:
-  explicit Workthread(QObject* parent = 0);
-  ~Workthread();
+	public:
+		explicit Workthread(QObject* parent = 0);
+		~Workthread();
 
-  // Replaces the old camera with the new one. After that, the old
-  // camera can be deleted. The new camera can be NULL, and so can the
-  // decoder.
-  void newCamera(QArvCamera* camera, QArvDecoder* decoder);
+		// Replaces the old camera with the new one. After that, the old
+		// camera can be deleted. The new camera can be NULL, and so can the
+		// decoder.
+		void newCamera(QArvCamera* camera, QArvDecoder* decoder);
 
-  // Can be NULL.
-  void newRecorder(Recorder* recorder, QFile* timestampFile);
+		// Can be NULL.
+		void newRecorder(Recorder* recorder, QFile* timestampFile);
 
-  // maxFrames: max number of frames to record.
-  //   if > 0, set new limit and reset frame count;
-  //   if 0, set no limit and reset frame count;
-  //   if -1, keep limit, do not reset frame count.
-  void startRecording(int maxFrames);
-  void stopRecording();
+		// maxFrames: max number of frames to record.
+		//   if > 0, set new limit and reset frame count;
+		//   if 0, set no limit and reset frame count;
+		//   if -1, keep limit, do not reset frame count.
+		void startRecording(int maxFrames);
+		void stopRecording();
 
-  void startCamera(bool zeroCopy, bool dropInvalidFrames);
-  void stopCamera();
+		void startCamera(bool zeroCopy, bool dropInvalidFrames);
+		void stopCamera();
 
-  void setImageTransform(bool imageTransform_invert,
-                         int imageTransform_flip,
-                         int imageTransform_rot);
+		void setImageTransform(bool imageTransform_invert,
+		                       int imageTransform_flip,
+		                       int imageTransform_rot);
 
-  void setFilterChain(QList<ImageFilterPtr> filterChain);
+		void setFilterChain(QList<ImageFilterPtr> filterChain);
 
-  void renderFrame(QImage* destinationImage,
-                   bool markClipped = false,
-                   Histograms* hists = NULL,
-                   bool logarithmic = false);
+		void renderFrame(QImage* destinationImage,
+		                 bool markClipped = false,
+		                 Histograms* hists = NULL,
+		                 bool logarithmic = false);
 
-  void waitUntilProcessingCycleCompletes();
+		void waitUntilProcessingCycleCompletes();
 
-  uint getFps();
+		uint getFps();
 
-signals:
-  void frameDelivered(QByteArray frame, ArvBuffer* arvFrame);
-  void frameCooked(cv::Mat frame);
-  void frameRendered();
-  void recordingStopped();
+	signals:
+		void frameDelivered(QByteArray frame, ArvBuffer* arvFrame);
+		void frameCooked(cv::Mat frame);
+		void frameRendered();
+		void recordingStopped();
 
-private:
-  QArvCamera* camera = nullptr;
-  Recorder* recorder = nullptr;
-  QFile* timestampFile = nullptr;
-  Cooker* cooker;
-  Renderer* renderer;
+	private:
+		QArvCamera* camera = nullptr;
+		Recorder* recorder = nullptr;
+		QFile* timestampFile = nullptr;
+		Cooker* cooker;
+		Renderer* renderer;
 };
 
 };
