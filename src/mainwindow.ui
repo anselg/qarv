@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>855</width>
-    <height>507</height>
+    <width>940</width>
+    <height>583</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -19,7 +19,7 @@
   </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QGridLayout" name="gridLayout_2">
-    <item row="2" column="0">
+    <item row="1" column="0">
      <widget class="QTabWidget" name="tabWidget">
       <property name="currentIndex">
        <number>0</number>
@@ -35,9 +35,15 @@
            <layout class="QVBoxLayout" name="verticalLayout_15">
             <item>
              <widget class="QGroupBox" name="cameraBox">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
               <property name="maximumSize">
                <size>
-                <width>350</width>
+                <width>16777215</width>
                 <height>16777215</height>
                </size>
               </property>
@@ -176,16 +182,29 @@
              </widget>
             </item>
             <item>
+             <spacer name="verticalSpacer">
+              <property name="orientation">
+               <enum>Qt::Vertical</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>20</width>
+                <height>40</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+            <item>
              <widget class="QGroupBox" name="Exposure">
               <property name="sizePolicy">
-               <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+               <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
                 <horstretch>0</horstretch>
                 <verstretch>0</verstretch>
                </sizepolicy>
               </property>
               <property name="maximumSize">
                <size>
-                <width>350</width>
+                <width>16777215</width>
                 <height>16777215</height>
                </size>
               </property>
@@ -338,23 +357,16 @@
               </layout>
              </widget>
             </item>
-            <item>
-             <spacer name="verticalSpacer">
-              <property name="orientation">
-               <enum>Qt::Vertical</enum>
-              </property>
-              <property name="sizeHint" stdset="0">
-               <size>
-                <width>20</width>
-                <height>40</height>
-               </size>
-              </property>
-             </spacer>
-            </item>
            </layout>
           </item>
           <item>
            <widget class="QGroupBox" name="roiBox">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
             <property name="title">
              <string>Region of interest</string>
             </property>
@@ -554,6 +566,19 @@
            </widget>
           </item>
           <item>
+           <spacer name="verticalSpacer_5">
+            <property name="orientation">
+             <enum>Qt::Vertical</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>20</width>
+              <height>40</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item>
            <widget class="QGroupBox" name="settingsBox">
             <property name="title">
              <string>Program settings</string>
@@ -614,7 +639,7 @@
              <item row="3" column="0">
               <widget class="QLabel" name="label_24">
                <property name="text">
-                <string>Status message timeout:</string>
+                <string>Notification timeout</string>
                </property>
               </widget>
              </item>
@@ -663,7 +688,7 @@
                </property>
               </widget>
              </item>
-             <item row="5" column="0" colspan="2">
+             <item row="6" column="0" colspan="2">
               <widget class="QCheckBox" name="nocopyCheck">
                <property name="toolTip">
                 <string>If this option is selected, as little copying of images is done as possible, making the program significantly faster. But, if the computer is too slow to process images in a timely manner, it may happen that the camera will be faster and will overwrite a current image. If this is a problem, disable this option.</string>
@@ -678,19 +703,6 @@
              </item>
             </layout>
            </widget>
-          </item>
-          <item>
-           <spacer name="verticalSpacer_5">
-            <property name="orientation">
-             <enum>Qt::Vertical</enum>
-            </property>
-            <property name="sizeHint" stdset="0">
-             <size>
-              <width>20</width>
-              <height>40</height>
-             </size>
-            </property>
-           </spacer>
           </item>
          </layout>
         </item>
@@ -740,6 +752,19 @@
              </item>
             </layout>
            </widget>
+          </item>
+          <item>
+           <spacer name="verticalSpacer_4">
+            <property name="orientation">
+             <enum>Qt::Vertical</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>20</width>
+              <height>40</height>
+             </size>
+            </property>
+           </spacer>
           </item>
           <item>
            <widget class="QGroupBox" name="postprocBox">
@@ -802,8 +827,117 @@
             </layout>
            </widget>
           </item>
+         </layout>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="recordingTab">
+       <attribute name="title">
+        <string>Recording</string>
+       </attribute>
+       <layout class="QVBoxLayout" name="verticalLayout_11">
+        <item>
+         <layout class="QVBoxLayout" name="verticalLayout_10">
           <item>
-           <spacer name="verticalSpacer_4">
+           <widget class="QGroupBox" name="snapshotBox">
+            <property name="title">
+             <string>Snapshots</string>
+            </property>
+            <layout class="QFormLayout" name="formLayout_5">
+             <item row="0" column="0">
+              <widget class="QLabel" name="label_15">
+               <property name="text">
+                <string>Snapshot directory:</string>
+               </property>
+              </widget>
+             </item>
+             <item row="0" column="1">
+              <layout class="QHBoxLayout" name="horizontalLayout_8">
+               <item>
+                <widget class="QLineEdit" name="snappathEdit">
+                 <property name="toolTip">
+                  <string>Snapshots will be put in this directory.</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QPushButton" name="chooseSnappathButton">
+                 <property name="toolTip">
+                  <string>Open directory.</string>
+                 </property>
+                 <property name="text">
+                  <string/>
+                 </property>
+                 <property name="icon">
+                  <iconset theme="document-open">
+                   <normaloff>.</normaloff>.</iconset>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </item>
+             <item row="1" column="0">
+              <widget class="QLabel" name="label_21">
+               <property name="text">
+                <string>Snapshot basename:</string>
+               </property>
+              </widget>
+             </item>
+             <item row="1" column="1">
+              <widget class="QLineEdit" name="snapbasenameEdit">
+               <property name="toolTip">
+                <string>Snapshot file names will begin with this basename and will have the current date and time appended.</string>
+               </property>
+               <property name="text">
+                <string notr="true">qarv_snapshot-</string>
+               </property>
+              </widget>
+             </item>
+             <item row="2" column="0">
+              <widget class="QLabel" name="label_16">
+               <property name="text">
+                <string>Snapshot format:</string>
+               </property>
+              </widget>
+             </item>
+             <item row="2" column="1">
+              <layout class="QHBoxLayout" name="horizontalLayout_11">
+               <item>
+                <widget class="QRadioButton" name="snapshotRaw">
+                 <property name="toolTip">
+                  <string>Frame data is simply dumped into the file undecoded.</string>
+                 </property>
+                 <property name="text">
+                  <string>Raw data</string>
+                 </property>
+                 <attribute name="buttonGroup">
+                  <string notr="true">buttonGroup</string>
+                 </attribute>
+                </widget>
+               </item>
+               <item>
+                <widget class="QRadioButton" name="snapshotPNG">
+                 <property name="toolTip">
+                  <string>The saved snapshot is as shown in the Video Display.</string>
+                 </property>
+                 <property name="text">
+                  <string>PNG image</string>
+                 </property>
+                 <property name="checked">
+                  <bool>true</bool>
+                 </property>
+                 <attribute name="buttonGroup">
+                  <string notr="true">buttonGroup</string>
+                 </attribute>
+                </widget>
+               </item>
+              </layout>
+             </item>
+            </layout>
+           </widget>
+          </item>
+          <item>
+           <spacer name="verticalSpacer_3">
             <property name="orientation">
              <enum>Qt::Vertical</enum>
             </property>
@@ -815,293 +949,175 @@
             </property>
            </spacer>
           </item>
-         </layout>
-        </item>
-       </layout>
-      </widget>
-      <widget class="QWidget" name="recordingTab">
-       <attribute name="title">
-        <string>Recording</string>
-       </attribute>
-       <layout class="QVBoxLayout" name="verticalLayout_11">
-        <item>
-         <widget class="QGroupBox" name="snapshotBox">
-          <property name="title">
-           <string>Snapshots</string>
-          </property>
-          <layout class="QFormLayout" name="formLayout_5">
-           <item row="0" column="0">
-            <widget class="QLabel" name="label_15">
-             <property name="text">
-              <string>Snapshot directory:</string>
+          <item>
+           <widget class="QGroupBox" name="videoBox">
+            <property name="title">
+             <string>Video</string>
+            </property>
+            <layout class="QFormLayout" name="formLayout_6">
+             <property name="fieldGrowthPolicy">
+              <enum>QFormLayout::ExpandingFieldsGrow</enum>
              </property>
-            </widget>
-           </item>
-           <item row="0" column="1">
-            <layout class="QHBoxLayout" name="horizontalLayout_8">
-             <item>
-              <widget class="QLineEdit" name="snappathEdit">
-               <property name="toolTip">
-                <string>Snapshots will be put in this directory.</string>
+             <item row="0" column="0">
+              <widget class="QLabel" name="label_12">
+               <property name="text">
+                <string>Video file:</string>
                </property>
               </widget>
              </item>
-             <item>
-              <widget class="QPushButton" name="chooseSnappathButton">
-               <property name="toolTip">
-                <string>Open directory.</string>
-               </property>
+             <item row="0" column="1">
+              <layout class="QHBoxLayout" name="horizontalLayout_5">
+               <item>
+                <widget class="QLineEdit" name="filenameEdit">
+                 <property name="toolTip">
+                  <string>The file to store recorded video.</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QPushButton" name="chooseFilenameButton">
+                 <property name="toolTip">
+                  <string>Open file.</string>
+                 </property>
+                 <property name="text">
+                  <string/>
+                 </property>
+                 <property name="icon">
+                  <iconset theme="document-open">
+                   <normaloff>.</normaloff>.</iconset>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </item>
+             <item row="1" column="0">
+              <widget class="QLabel" name="label_17">
                <property name="text">
-                <string/>
-               </property>
-               <property name="icon">
-                <iconset theme="document-open">
-                 <normaloff>.</normaloff>.</iconset>
+                <string>Video format:</string>
                </property>
               </widget>
              </item>
-            </layout>
-           </item>
-           <item row="1" column="0">
-            <widget class="QLabel" name="label_21">
-             <property name="text">
-              <string>Snapshot basename:</string>
-             </property>
-            </widget>
-           </item>
-           <item row="1" column="1">
-            <widget class="QLineEdit" name="snapbasenameEdit">
-             <property name="toolTip">
-              <string>Snapshot file names will begin with this basename and will have the current date and time appended.</string>
-             </property>
-             <property name="text">
-              <string notr="true">qarv_snapshot-</string>
-             </property>
-            </widget>
-           </item>
-           <item row="2" column="0">
-            <widget class="QLabel" name="label_16">
-             <property name="text">
-              <string>Snapshot format:</string>
-             </property>
-            </widget>
-           </item>
-           <item row="2" column="1">
-            <layout class="QHBoxLayout" name="horizontalLayout_11">
-             <item>
-              <widget class="QRadioButton" name="snapshotRaw">
+             <item row="1" column="1">
+              <widget class="QComboBox" name="videoFormatSelector">
                <property name="toolTip">
-                <string>Frame data is simply dumped into the file undecoded.</string>
+                <string>Choose format of recorded video.</string>
                </property>
-               <property name="text">
-                <string>Raw data</string>
-               </property>
-               <attribute name="buttonGroup">
-                <string notr="true">buttonGroup</string>
-               </attribute>
               </widget>
              </item>
-             <item>
-              <widget class="QRadioButton" name="snapshotPNG">
+             <item row="2" column="1">
+              <widget class="QCheckBox" name="recordInfoCheck">
                <property name="toolTip">
-                <string>The saved snapshot is as shown in the Video Display.</string>
+                <string>Raw video formats do not contain any identifying information in the video file itself. If checked, an additional file with a .qarv extension will be created and will contain video format information. This file can be opened with the qarv video player.</string>
                </property>
                <property name="text">
-                <string>PNG image</string>
+                <string>Write video information file</string>
+               </property>
+               <property name="checked">
+                <bool>true</bool>
+               </property>
+              </widget>
+             </item>
+             <item row="3" column="1">
+              <widget class="QCheckBox" name="recordTimestampsCheck">
+               <property name="toolTip">
+                <string>An additional file with a .timestamps extension will be created and will contain frame timestamps in nanoseconds, one per line, in text form.</string>
+               </property>
+               <property name="text">
+                <string>Write timestamp file</string>
+               </property>
+              </widget>
+             </item>
+             <item row="4" column="1">
+              <widget class="QCheckBox" name="recordMetadataCheck">
+               <property name="toolTip">
+                <string>Creates an additional file with .caminfo extension. It can be loaded using Advanced settings tab.</string>
+               </property>
+               <property name="text">
+                <string>Dump camera settings along with the video</string>
+               </property>
+              </widget>
+             </item>
+             <item row="5" column="0">
+              <widget class="QLabel" name="label_19">
+               <property name="text">
+                <string>Stop recording:</string>
+               </property>
+              </widget>
+             </item>
+             <item row="5" column="1">
+              <widget class="QRadioButton" name="stopRecordingManuallyRadio">
+               <property name="toolTip">
+                <string>Recording will not be stopped automatically.</string>
+               </property>
+               <property name="text">
+                <string>Manually</string>
                </property>
                <property name="checked">
                 <bool>true</bool>
                </property>
                <attribute name="buttonGroup">
-                <string notr="true">buttonGroup</string>
-               </attribute>
-              </widget>
-             </item>
-            </layout>
-           </item>
-          </layout>
-         </widget>
-        </item>
-        <item>
-         <widget class="QGroupBox" name="videoBox">
-          <property name="title">
-           <string>Video</string>
-          </property>
-          <layout class="QFormLayout" name="formLayout_6">
-           <property name="fieldGrowthPolicy">
-            <enum>QFormLayout::ExpandingFieldsGrow</enum>
-           </property>
-           <item row="0" column="0">
-            <widget class="QLabel" name="label_12">
-             <property name="text">
-              <string>Video file:</string>
-             </property>
-            </widget>
-           </item>
-           <item row="0" column="1">
-            <layout class="QHBoxLayout" name="horizontalLayout_5">
-             <item>
-              <widget class="QLineEdit" name="filenameEdit">
-               <property name="toolTip">
-                <string>The file to store recorded video.</string>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <widget class="QPushButton" name="chooseFilenameButton">
-               <property name="toolTip">
-                <string>Open file.</string>
-               </property>
-               <property name="text">
-                <string/>
-               </property>
-               <property name="icon">
-                <iconset theme="document-open">
-                 <normaloff>.</normaloff>.</iconset>
-               </property>
-              </widget>
-             </item>
-            </layout>
-           </item>
-           <item row="1" column="0">
-            <widget class="QLabel" name="label_17">
-             <property name="text">
-              <string>Video format:</string>
-             </property>
-            </widget>
-           </item>
-           <item row="1" column="1">
-            <widget class="QComboBox" name="videoFormatSelector">
-             <property name="toolTip">
-              <string>Choose format of recorded video.</string>
-             </property>
-            </widget>
-           </item>
-           <item row="2" column="1">
-            <widget class="QCheckBox" name="recordInfoCheck">
-             <property name="toolTip">
-              <string>Raw video formats do not contain any identifying information in the video file itself. If checked, an additional file with a .qarv extension will be created and will contain video format information. This file can be opened with the qarv video player.</string>
-             </property>
-             <property name="text">
-              <string>Write video information file</string>
-             </property>
-             <property name="checked">
-              <bool>true</bool>
-             </property>
-            </widget>
-           </item>
-           <item row="3" column="1">
-            <widget class="QCheckBox" name="recordTimestampsCheck">
-             <property name="toolTip">
-              <string>An additional file with a .timestamps extension will be created and will contain frame timestamps in nanoseconds, one per line, in text form.</string>
-             </property>
-             <property name="text">
-              <string>Write timestamp file</string>
-             </property>
-            </widget>
-           </item>
-           <item row="4" column="1">
-            <widget class="QCheckBox" name="recordMetadataCheck">
-             <property name="toolTip">
-              <string>Creates an additional file with .caminfo extension. It can be loaded using Advanced settings tab.</string>
-             </property>
-             <property name="text">
-              <string>Dump camera settings along with the video</string>
-             </property>
-            </widget>
-           </item>
-           <item row="5" column="0">
-            <widget class="QLabel" name="label_19">
-             <property name="text">
-              <string>Stop recording:</string>
-             </property>
-            </widget>
-           </item>
-           <item row="5" column="1">
-            <widget class="QRadioButton" name="stopRecordingManuallyRadio">
-             <property name="toolTip">
-              <string>Recording will not be stopped automatically.</string>
-             </property>
-             <property name="text">
-              <string>Manually</string>
-             </property>
-             <property name="checked">
-              <bool>true</bool>
-             </property>
-             <attribute name="buttonGroup">
-              <string notr="true">stopRecordingRadios</string>
-             </attribute>
-            </widget>
-           </item>
-           <item row="6" column="1">
-            <layout class="QHBoxLayout" name="horizontalLayout">
-             <item>
-              <widget class="QRadioButton" name="stopRecordingFramesRadio">
-               <property name="toolTip">
-                <string>Recording will be stopped when the specified number of frames is recorded.</string>
-               </property>
-               <property name="text">
-                <string>After this many frames:</string>
-               </property>
-               <attribute name="buttonGroup">
                 <string notr="true">stopRecordingRadios</string>
                </attribute>
               </widget>
              </item>
-             <item>
-              <widget class="QSpinBox" name="stopRecordingFrames">
-               <property name="minimum">
-                <number>1</number>
-               </property>
-               <property name="maximum">
-                <number>100000</number>
-               </property>
-               <property name="value">
-                <number>100</number>
-               </property>
-              </widget>
+             <item row="6" column="1">
+              <layout class="QHBoxLayout" name="horizontalLayout">
+               <item>
+                <widget class="QRadioButton" name="stopRecordingFramesRadio">
+                 <property name="toolTip">
+                  <string>Recording will be stopped when the specified number of frames is recorded.</string>
+                 </property>
+                 <property name="text">
+                  <string>After this many frames:</string>
+                 </property>
+                 <attribute name="buttonGroup">
+                  <string notr="true">stopRecordingRadios</string>
+                 </attribute>
+                </widget>
+               </item>
+               <item>
+                <widget class="QSpinBox" name="stopRecordingFrames">
+                 <property name="minimum">
+                  <number>1</number>
+                 </property>
+                 <property name="maximum">
+                  <number>100000</number>
+                 </property>
+                 <property name="value">
+                  <number>100</number>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </item>
+             <item row="7" column="1">
+              <layout class="QHBoxLayout" name="horizontalLayout_15">
+               <item>
+                <widget class="QRadioButton" name="stopRecordingTimeRadio">
+                 <property name="toolTip">
+                  <string>Recording will be stopped when the specified amount of time elapses. Time is specified as hours:minutes:seconds.</string>
+                 </property>
+                 <property name="text">
+                  <string>After this much time:</string>
+                 </property>
+                 <attribute name="buttonGroup">
+                  <string notr="true">stopRecordingRadios</string>
+                 </attribute>
+                </widget>
+               </item>
+               <item>
+                <widget class="QTimeEdit" name="stopRecordingTime">
+                 <property name="displayFormat">
+                  <string notr="true">HH:mm:ss</string>
+                 </property>
+                </widget>
+               </item>
+              </layout>
              </item>
             </layout>
-           </item>
-           <item row="7" column="1">
-            <layout class="QHBoxLayout" name="horizontalLayout_15">
-             <item>
-              <widget class="QRadioButton" name="stopRecordingTimeRadio">
-               <property name="toolTip">
-                <string>Recording will be stopped when the specified amount of time elapses. Time is specified as hours:minutes:seconds.</string>
-               </property>
-               <property name="text">
-                <string>After this much time:</string>
-               </property>
-               <attribute name="buttonGroup">
-                <string notr="true">stopRecordingRadios</string>
-               </attribute>
-              </widget>
-             </item>
-             <item>
-              <widget class="QTimeEdit" name="stopRecordingTime">
-               <property name="displayFormat">
-                <string notr="true">HH:mm:ss</string>
-               </property>
-              </widget>
-             </item>
-            </layout>
-           </item>
-          </layout>
-         </widget>
-        </item>
-        <item>
-         <spacer name="verticalSpacer_3">
-          <property name="orientation">
-           <enum>Qt::Vertical</enum>
-          </property>
-          <property name="sizeHint" stdset="0">
-           <size>
-            <width>20</width>
-            <height>40</height>
-           </size>
-          </property>
-         </spacer>
+           </widget>
+          </item>
+         </layout>
         </item>
        </layout>
       </widget>
@@ -1111,43 +1127,47 @@
        </attribute>
        <layout class="QVBoxLayout" name="verticalLayout_9">
         <item>
-         <widget class="QTreeView" name="advancedTree">
-          <property name="animated">
-           <bool>true</bool>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QLabel" name="label_20">
-          <property name="text">
-           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;This view provides direct access to the camera. Changes may not be reflected in the rest of the program.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-          </property>
-          <property name="wordWrap">
-           <bool>true</bool>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <layout class="QHBoxLayout" name="horizontalLayout_6">
+         <layout class="QVBoxLayout" name="verticalLayout_13">
           <item>
-           <widget class="QPushButton" name="saveSettingsButton">
-            <property name="toolTip">
-             <string>Choose a file to store camera settings.</string>
-            </property>
-            <property name="text">
-             <string>Save settings</string>
+           <widget class="QTreeView" name="advancedTree">
+            <property name="animated">
+             <bool>true</bool>
             </property>
            </widget>
           </item>
           <item>
-           <widget class="QPushButton" name="loadSettingsButton">
-            <property name="toolTip">
-             <string>Choose a file to load camera settings.</string>
-            </property>
+           <widget class="QLabel" name="label_20">
             <property name="text">
-             <string>Load Settings</string>
+             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;This view provides direct access to the camera. Changes may not be reflected in the rest of the program.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+            </property>
+            <property name="wordWrap">
+             <bool>true</bool>
             </property>
            </widget>
+          </item>
+          <item>
+           <layout class="QHBoxLayout" name="horizontalLayout_6">
+            <item>
+             <widget class="QPushButton" name="saveSettingsButton">
+              <property name="toolTip">
+               <string>Choose a file to store camera settings.</string>
+              </property>
+              <property name="text">
+               <string>Save settings</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QPushButton" name="loadSettingsButton">
+              <property name="toolTip">
+               <string>Choose a file to load camera settings.</string>
+              </property>
+              <property name="text">
+               <string>Load Settings</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
           </item>
          </layout>
         </item>
@@ -1158,6 +1178,12 @@
    </layout>
   </widget>
   <widget class="QDockWidget" name="videodock">
+   <property name="sizePolicy">
+    <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+     <horstretch>1</horstretch>
+     <verstretch>0</verstretch>
+    </sizepolicy>
+   </property>
    <property name="windowTitle">
     <string>Video Display</string>
    </property>
@@ -1177,7 +1203,8 @@
           <string>Display image</string>
          </property>
          <property name="icon">
-          <iconset theme="video-display"/>
+          <iconset theme="video-display">
+           <normaloff>.</normaloff>.</iconset>
          </property>
          <property name="checkable">
           <bool>true</bool>
@@ -1245,6 +1272,12 @@
    </widget>
   </widget>
   <widget class="QDockWidget" name="histogramdock">
+   <property name="sizePolicy">
+    <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+     <horstretch>1</horstretch>
+     <verstretch>0</verstretch>
+    </sizepolicy>
+   </property>
    <property name="windowTitle">
     <string>Histogram</string>
    </property>
@@ -1301,6 +1334,12 @@
    </widget>
   </widget>
   <widget class="QDockWidget" name="messageDock">
+   <property name="sizePolicy">
+    <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+     <horstretch>1</horstretch>
+     <verstretch>0</verstretch>
+    </sizepolicy>
+   </property>
    <property name="windowTitle">
     <string>Diagnostic log</string>
    </property>
@@ -1355,7 +1394,8 @@
     <bool>true</bool>
    </property>
    <property name="icon">
-    <iconset theme="camera"/>
+    <iconset theme="camera">
+     <normaloff>.</normaloff>.</iconset>
    </property>
    <property name="text">
     <string>Snapshot</string>
@@ -1504,7 +1544,7 @@
   </connection>
  </connections>
  <buttongroups>
-  <buttongroup name="stopRecordingRadios"/>
   <buttongroup name="buttonGroup"/>
+  <buttongroup name="stopRecordingRadios"/>
  </buttongroups>
 </ui>
