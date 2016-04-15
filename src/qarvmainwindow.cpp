@@ -63,8 +63,6 @@ QArvMainWindow::QArvMainWindow(QWidget* parent, bool standalone_) :
 	messageList->connect(&QArvDebug::messageSender, SIGNAL(newDebugMessage(QString)),
 	                     SLOT(appendPlainText(QString)));
 
-	aboutLabel->setText(aboutLabel->text().arg(QARV_VERSION));
-
 	workthread = new Workthread(this);
 	connect(workthread, SIGNAL(frameRendered()), SLOT(frameRendered()));
 	connect(workthread, SIGNAL(recordingStopped()), SLOT(stopRecording()));
@@ -119,8 +117,6 @@ QArvMainWindow::QArvMainWindow(QWidget* parent, bool standalone_) :
 		std::strcpy(tmp, "$6872F=E");
 		for (int i = 0; i < 8; i++)
 			tmp[i] = (tmp[i] + (16 ^ 63)) % (1<<7);
-		QGridLayout* ay = static_cast<QGridLayout*>(aboutTab->layout());
-		ay->addWidget(wgt, 1, 0);
 		auto r = new QPushButton(tmp);
 		wgt->layout()->addWidget(r);
 		connect(r, SIGNAL(clicked(bool)), SLOT(on_replayButton_clicked(bool)));
