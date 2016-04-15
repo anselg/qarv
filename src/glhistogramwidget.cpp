@@ -24,9 +24,9 @@
 
 using namespace QArv;
 
-GLHistogramWidget::GLHistogramWidget(QWidget* parent) :
-	QGLWidget(), unusedHists(&histograms2), histRed(histograms1.red),
-	histGreen(histograms1.green), histBlue(histograms1.blue) {
+GLHistogramWidget::GLHistogramWidget(QWidget* parent) 
+	: QGLWidget(), unusedHists(&histograms2), histRed(histograms1.red),
+	  histGreen(histograms1.green), histBlue(histograms1.blue) {
 	indexed = true;
 	logarithmic = false;
 	QFile iconfile(QString(qarv_datafiles) + 
