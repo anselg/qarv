@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>855</width>
+    <width>900</width>
     <height>507</height>
    </rect>
   </property>
@@ -19,7 +19,7 @@
   </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QGridLayout" name="gridLayout_2">
-    <item row="2" column="0">
+    <item row="1" column="0">
      <widget class="QTabWidget" name="tabWidget">
       <property name="currentIndex">
        <number>0</number>
@@ -35,9 +35,15 @@
            <layout class="QVBoxLayout" name="verticalLayout_15">
             <item>
              <widget class="QGroupBox" name="cameraBox">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
               <property name="maximumSize">
                <size>
-                <width>350</width>
+                <width>16777215</width>
                 <height>16777215</height>
                </size>
               </property>
@@ -176,16 +182,29 @@
              </widget>
             </item>
             <item>
+             <spacer name="verticalSpacer">
+              <property name="orientation">
+               <enum>Qt::Vertical</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>20</width>
+                <height>40</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+            <item>
              <widget class="QGroupBox" name="Exposure">
               <property name="sizePolicy">
-               <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+               <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
                 <horstretch>0</horstretch>
                 <verstretch>0</verstretch>
                </sizepolicy>
               </property>
               <property name="maximumSize">
                <size>
-                <width>350</width>
+                <width>16777215</width>
                 <height>16777215</height>
                </size>
               </property>
@@ -338,23 +357,16 @@
               </layout>
              </widget>
             </item>
-            <item>
-             <spacer name="verticalSpacer">
-              <property name="orientation">
-               <enum>Qt::Vertical</enum>
-              </property>
-              <property name="sizeHint" stdset="0">
-               <size>
-                <width>20</width>
-                <height>40</height>
-               </size>
-              </property>
-             </spacer>
-            </item>
            </layout>
           </item>
           <item>
            <widget class="QGroupBox" name="roiBox">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
             <property name="title">
              <string>Region of interest</string>
             </property>
@@ -554,6 +566,19 @@
            </widget>
           </item>
           <item>
+           <spacer name="verticalSpacer_5">
+            <property name="orientation">
+             <enum>Qt::Vertical</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>20</width>
+              <height>40</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item>
            <widget class="QGroupBox" name="settingsBox">
             <property name="title">
              <string>Program settings</string>
@@ -614,7 +639,7 @@
              <item row="3" column="0">
               <widget class="QLabel" name="label_24">
                <property name="text">
-                <string>Status message timeout:</string>
+                <string>Notification timeout</string>
                </property>
               </widget>
              </item>
@@ -663,7 +688,7 @@
                </property>
               </widget>
              </item>
-             <item row="5" column="0" colspan="2">
+             <item row="6" column="0" colspan="2">
               <widget class="QCheckBox" name="nocopyCheck">
                <property name="toolTip">
                 <string>If this option is selected, as little copying of images is done as possible, making the program significantly faster. But, if the computer is too slow to process images in a timely manner, it may happen that the camera will be faster and will overwrite a current image. If this is a problem, disable this option.</string>
@@ -678,19 +703,6 @@
              </item>
             </layout>
            </widget>
-          </item>
-          <item>
-           <spacer name="verticalSpacer_5">
-            <property name="orientation">
-             <enum>Qt::Vertical</enum>
-            </property>
-            <property name="sizeHint" stdset="0">
-             <size>
-              <width>20</width>
-              <height>40</height>
-             </size>
-            </property>
-           </spacer>
           </item>
          </layout>
         </item>
@@ -740,6 +752,19 @@
              </item>
             </layout>
            </widget>
+          </item>
+          <item>
+           <spacer name="verticalSpacer_4">
+            <property name="orientation">
+             <enum>Qt::Vertical</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>20</width>
+              <height>40</height>
+             </size>
+            </property>
+           </spacer>
           </item>
           <item>
            <widget class="QGroupBox" name="postprocBox">
@@ -801,19 +826,6 @@
              </item>
             </layout>
            </widget>
-          </item>
-          <item>
-           <spacer name="verticalSpacer_4">
-            <property name="orientation">
-             <enum>Qt::Vertical</enum>
-            </property>
-            <property name="sizeHint" stdset="0">
-             <size>
-              <width>20</width>
-              <height>40</height>
-             </size>
-            </property>
-           </spacer>
           </item>
          </layout>
         </item>
@@ -921,6 +933,19 @@
            </item>
           </layout>
          </widget>
+        </item>
+        <item>
+         <spacer name="verticalSpacer_3">
+          <property name="orientation">
+           <enum>Qt::Vertical</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>20</width>
+            <height>40</height>
+           </size>
+          </property>
+         </spacer>
         </item>
         <item>
          <widget class="QGroupBox" name="videoBox">
@@ -1090,19 +1115,6 @@
           </layout>
          </widget>
         </item>
-        <item>
-         <spacer name="verticalSpacer_3">
-          <property name="orientation">
-           <enum>Qt::Vertical</enum>
-          </property>
-          <property name="sizeHint" stdset="0">
-           <size>
-            <width>20</width>
-            <height>40</height>
-           </size>
-          </property>
-         </spacer>
-        </item>
        </layout>
       </widget>
       <widget class="QWidget" name="advancedTab">
@@ -1158,6 +1170,12 @@
    </layout>
   </widget>
   <widget class="QDockWidget" name="videodock">
+   <property name="sizePolicy">
+    <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+     <horstretch>1</horstretch>
+     <verstretch>0</verstretch>
+    </sizepolicy>
+   </property>
    <property name="windowTitle">
     <string>Video Display</string>
    </property>
@@ -1177,7 +1195,8 @@
           <string>Display image</string>
          </property>
          <property name="icon">
-          <iconset theme="video-display"/>
+          <iconset theme="video-display">
+           <normaloff>.</normaloff>.</iconset>
          </property>
          <property name="checkable">
           <bool>true</bool>
@@ -1245,6 +1264,12 @@
    </widget>
   </widget>
   <widget class="QDockWidget" name="histogramdock">
+   <property name="sizePolicy">
+    <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+     <horstretch>1</horstretch>
+     <verstretch>0</verstretch>
+    </sizepolicy>
+   </property>
    <property name="windowTitle">
     <string>Histogram</string>
    </property>
@@ -1301,6 +1326,12 @@
    </widget>
   </widget>
   <widget class="QDockWidget" name="messageDock">
+   <property name="sizePolicy">
+    <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+     <horstretch>1</horstretch>
+     <verstretch>0</verstretch>
+    </sizepolicy>
+   </property>
    <property name="windowTitle">
     <string>Diagnostic log</string>
    </property>
@@ -1355,7 +1386,8 @@
     <bool>true</bool>
    </property>
    <property name="icon">
-    <iconset theme="camera"/>
+    <iconset theme="camera">
+     <normaloff>.</normaloff>.</iconset>
    </property>
    <property name="text">
     <string>Snapshot</string>
@@ -1504,7 +1536,7 @@
   </connection>
  </connections>
  <buttongroups>
-  <buttongroup name="stopRecordingRadios"/>
   <buttongroup name="buttonGroup"/>
+  <buttongroup name="stopRecordingRadios"/>
  </buttongroups>
 </ui>
