@@ -115,6 +115,7 @@ set_prefixed(qarv_MOCS src/
   api/qarvcamera.h
   api/qarvcameradelegate.h
   filters/filter.h
+  filters/levels.h
 )
 qt5_wrap_cpp(qarv_MOCD ${qarv_MOCS})
 set_prefixed(qarv_SRCS src/
@@ -239,10 +240,12 @@ set_prefixed(qarv_recorders_SRC src/recorders/
 #)
 set_prefixed(qarv_filters_MOCS src/filters/
   levels.h
+  filter.h
 )
 qt5_wrap_cpp(qarv_filters_MOCD ${qarv_filters_MOCS})
 set_prefixed(qarv_filters_SRC src/filters/
   levels.cpp
+  filter.cpp
 )
 set_prefixed(qarv_filters_UIS_pre src/filters/
   levels.ui
