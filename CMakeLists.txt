@@ -42,14 +42,6 @@ find_package(Qt5OpenGL REQUIRED) # Qt5
 find_package(Qt5Network REQUIRED) # Qt5
 find_package(Qt5Svg REQUIRED) # Qt5
 
-#find_package(Qt4 REQUIRED
-#  QtCore
-#  QtGui
-#  QtOpenGL
-#  QtNetwork
-#  QtSVG
-#)
-
 include(FindPkgConfig)
 pkg_search_module(ARAVIS REQUIRED aravis-0.4 aravis-0.2)
 pkg_check_modules(GIO REQUIRED gio-2.0)
@@ -119,17 +111,17 @@ set_prefixed(qarv_MOCS src/
 )
 qt5_wrap_cpp(qarv_MOCD ${qarv_MOCS})
 set_prefixed(qarv_SRCS src/
-  qarvmainwindow.cpp
-  main.cpp
-  glvideowidget.cpp
-  glhistogramwidget.cpp
-  globals.cpp
-  roicombobox.cpp
-  qarvfeaturetree.cpp
-  workthread.cpp
+#  qarvmainwindow.cpp
+#  main.cpp
+#  glvideowidget.cpp
+#  glhistogramwidget.cpp
+#  globals.cpp
+#  roicombobox.cpp
+#  qarvfeaturetree.cpp
+#  workthread.cpp
+#  recorders/recorder.cpp
+#  filters/filter.cpp
   api/qarvtype.cpp
-  recorders/recorder.cpp
-  filters/filter.cpp
   api/qarvgui.cpp
   api/qarvcamera.cpp
   api/qarvdecoder.cpp
@@ -165,52 +157,12 @@ set_prefixed(qarv_decoders_MOCS src/decoders/
   bayer/bayerrg12_packed.h
   bayer/bayerrg16.h
 )
-#set_prefixed(qarv_decoders_MOCS src/decoders/
-#  mono12packed.h
-#  monounpackeddecoders.h
-#  bayer.h
-#)
 qt5_wrap_cpp(qarv_decoders_MOCD ${qarv_decoders_MOCS})
 set_prefixed(qarv_decoders_SRC src/decoders/
   graymap.cpp
   mono12packed.cpp
   swscaledecoder.cpp
 )
-
-#  mono/mono8.cpp
-#  mono/mono8signed.cpp
-#  mono/mono10.cpp
-#  mono/mono12.cpp
-#  mono/mono14.cpp
-#  mono/mono16.cpp
-#  bayer/bayerbg8.cpp
-#  bayer/bayerbg10.cpp
-#  bayer/bayerbg12.cpp
-#  bayer/bayerbg12_packed.cpp
-#  bayer/bayerbg16.cpp
-#  bayer/bayergb8.cpp
-#  bayer/bayergb10.cpp
-#  bayer/bayergb12.cpp
-#  bayer/bayergb12_packed.cpp
-#  bayer/bayergb16.cpp
-#  bayer/bayergr8.cpp
-#  bayer/bayergr10.cpp
-#  bayer/bayergr12.cpp
-#  bayer/bayergr12_packed.cpp
-#  bayer/bayergr16.cpp
-#  bayer/bayerrg8.cpp
-#  bayer/bayerrg10.cpp
-#  bayer/bayerrg12.cpp
-#  bayer/bayerrg12_packed.cpp
-#  bayer/bayerrg16.cpp
-
-#set_prefixed(qarv_decoders_SRC src/decoders/
-#  graymap.cpp
-#  mono12packed.cpp
-#  monounpackeddecoders.cpp
-#  swscaledecoder.cpp
-#  bayer.cpp
-#)
 set_prefixed(qarv_recorders_MOCS src/recorders/
   rawrecorders/rawdecoded16.h
   rawrecorders/rawdecoded8.h
@@ -218,11 +170,6 @@ set_prefixed(qarv_recorders_MOCS src/recorders/
   gstrecorders/gstrecorders.h
   imagerecorders/imagerecorder.h
 )
-#set_prefixed(qarv_recorders_MOCS src/recorders/
-#  rawrecorders.h
-#  gstrecorders.h
-#  imagerecorder.h
-#)
 qt5_wrap_cpp(qarv_recorders_MOCD ${qarv_recorders_MOCS})
 set_prefixed(qarv_recorders_SRC src/recorders/
   rawrecorders/rawdecoded16.cpp
@@ -232,12 +179,6 @@ set_prefixed(qarv_recorders_SRC src/recorders/
   gstrecorders/gstrecorder_implementation.cpp
   imagerecorders/imagerecorder.cpp
 )
-#set_prefixed(qarv_recorders_SRC src/recorders/
-#  rawrecorders.cpp
-#  gstrecorders.cpp
-#  gstrecorder_implementation.cpp
-#  imagerecorder.cpp
-#)
 set_prefixed(qarv_filters_MOCS src/filters/
   levels.h
   filter.h
@@ -284,60 +225,61 @@ target_link_libraries(${libqarv}
 )
 set_target_properties(${libqarv} PROPERTIES SOVERSION ${qarv_ABI})
 
-add_executable(qarvexe src/main.cpp)
-target_link_libraries(qarvexe 
-  ${Qt5Widgets_LIBRARIES} 
-  ${Qt5OpenGL_LIBRARIES} 
-  ${Qt5Svg_LIBRARIES} 
-  ${Qt5Network_LIBRARIES} 
-  ${libqarv}
-)
-set_target_properties(qarvexe PROPERTIES OUTPUT_NAME qarv)
+#add_executable(qarvexe src/main.cpp)
+#target_link_libraries(qarvexe 
+#  ${Qt5Widgets_LIBRARIES} 
+#  ${Qt5OpenGL_LIBRARIES} 
+#  ${Qt5Svg_LIBRARIES} 
+#  ${Qt5Network_LIBRARIES} 
+#  ${libqarv}
+#)
+#set_target_properties(qarvexe PROPERTIES OUTPUT_NAME qarv)
+#
+#qt5_wrap_ui(qarv_videoplayer_UI src/utils/qarv_videoplayer.ui)
+#qt5_wrap_cpp(qarv_videoplayer_MOC
+#  src/utils/qarv_videoplayer.h
+#  src/glvideowidget.h
+#  src/globals.h
+#)
+#add_executable(qarv_videoplayer
+#  src/utils/qarv_videoplayer.cpp
+#  src/glvideowidget.cpp
+#  src/recorders/gstrecorders/gstrecorder_implementation.cpp
+#  src/globals.cpp
+#  ${qarv_videoplayer_MOC}
+#  ${qarv_videoplayer_UI}
+#)
+#target_link_libraries(qarv_videoplayer 
+#  ${Qt5Widgets_LIBRARIES} 
+#  ${Qt5OpenGL_LIBRARIES} 
+#  ${Qt5Svg_LIBRARIES} 
+#  ${Qt5Network_LIBRARIES} 
+#  ${libqarv}
+#)
+#
+#set_prefixed(qarv_ICONS res/icons/
+#  document-open.svgz
+#  document-save.svgz
+#  edit-clear.svgz
+#  media-playback-start.svgz
+#  media-record.svgz
+#  video-display.svgz
+#  view-refresh.svgz
+#  zoom-original.svgz
+#  office-chart-bar.svgz
+#  view-object-histogram-linear.svgz
+#  view-object-histogram-logarithmic.svgz
+#  edit-clear-locationbar-rtl.svgz
+#  edit-select.svgz
+#  media-playback-stop.svgz
+#  media-playback-pause.svgz
+#  dialog-information.svgz
+#  go-first.svgz
+#  go-last.svgz
+#)
 
-qt5_wrap_ui(qarv_videoplayer_UI src/utils/qarv_videoplayer.ui)
-qt5_wrap_cpp(qarv_videoplayer_MOC
-  src/utils/qarv_videoplayer.h
-  src/glvideowidget.h
-  src/globals.h
-)
-add_executable(qarv_videoplayer
-  src/utils/qarv_videoplayer.cpp
-  src/glvideowidget.cpp
-  src/recorders/gstrecorders/gstrecorder_implementation.cpp
-  src/globals.cpp
-  ${qarv_videoplayer_MOC}
-  ${qarv_videoplayer_UI}
-)
-target_link_libraries(qarv_videoplayer 
-  ${Qt5Widgets_LIBRARIES} 
-  ${Qt5OpenGL_LIBRARIES} 
-  ${Qt5Svg_LIBRARIES} 
-  ${Qt5Network_LIBRARIES} 
-  ${libqarv}
-)
-
-set_prefixed(qarv_ICONS res/icons/
-  document-open.svgz
-  document-save.svgz
-  edit-clear.svgz
-  media-playback-start.svgz
-  media-record.svgz
-  video-display.svgz
-  view-refresh.svgz
-  zoom-original.svgz
-  office-chart-bar.svgz
-  view-object-histogram-linear.svgz
-  view-object-histogram-logarithmic.svgz
-  edit-clear-locationbar-rtl.svgz
-  edit-select.svgz
-  media-playback-stop.svgz
-  media-playback-pause.svgz
-  dialog-information.svgz
-  go-first.svgz
-  go-last.svgz
-)
-
-install(TARGETS ${libqarv} qarvexe qarv_videoplayer
+#install(TARGETS ${libqarv} qarvexe qarv_videoplayer
+install(TARGETS ${libqarv} 
         RUNTIME DESTINATION bin/
         LIBRARY DESTINATION lib/)
 set_prefixed(qarv_IHDR src/api/
@@ -350,33 +292,33 @@ set_prefixed(qarv_IHDR src/api/
 )
 install(FILES ${qarv_IHDR}
         DESTINATION include/qarv-${qarv_API}/)
-install(FILES ${qarv_TRANS} ${qarv_ICONS}
-        DESTINATION ${qarv_DATA})
-install(FILES res/icons/qarv.svgz
-        RENAME application-x-qarv.svgz
-        DESTINATION share/icons/)
-install(FILES res/qarv.desktop res/qarv-player.desktop
-        DESTINATION share/applications/)
-install(FILES res/qarv.xml
-        DESTINATION share/mime/packages/)
-
-configure_file(${CMAKE_CURRENT_SOURCE_DIR}/res/qarv.pc.in
-	       ${CMAKE_CURRENT_BINARY_DIR}/qarv-${qarv_API}.pc
-               @ONLY)
-install(FILES ${CMAKE_CURRENT_BINARY_DIR}/qarv-${qarv_API}.pc
-	DESTINATION lib/pkgconfig/)
+#install(FILES ${qarv_TRANS} ${qarv_ICONS}
+#        DESTINATION ${qarv_DATA})
+#install(FILES res/icons/qarv.svgz
+#        RENAME application-x-qarv.svgz
+#        DESTINATION share/icons/)
+#install(FILES res/qarv.desktop res/qarv-player.desktop
+#        DESTINATION share/applications/)
+#install(FILES res/qarv.xml
+#        DESTINATION share/mime/packages/)
+#
+#configure_file(${CMAKE_CURRENT_SOURCE_DIR}/res/qarv.pc.in
+#	       ${CMAKE_CURRENT_BINARY_DIR}/qarv-${qarv_API}.pc
+#               @ONLY)
+#install(FILES ${CMAKE_CURRENT_BINARY_DIR}/qarv-${qarv_API}.pc
+#	DESTINATION lib/pkgconfig/)
 
 # add a target to generate API documentation with Doxygen
-find_package(Doxygen)
-if(DOXYGEN_FOUND)
-configure_file(${CMAKE_CURRENT_SOURCE_DIR}/Doxyfile.in ${CMAKE_CURRENT_BINARY_DIR}/Doxyfile @ONLY)
-add_custom_target(doc
-${DOXYGEN_EXECUTABLE} ${CMAKE_CURRENT_BINARY_DIR}/Doxyfile
-WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
-COMMENT "Generating API documentation with Doxygen" VERBATIM
-COMMAND echo
-COMMAND echo
-COMMAND echo "API documentation can be found in ${CMAKE_CURRENT_BINARY_DIR}/apidoc/"
-COMMAND echo
-)
-endif(DOXYGEN_FOUND)
+#find_package(Doxygen)
+#if(DOXYGEN_FOUND)
+#configure_file(${CMAKE_CURRENT_SOURCE_DIR}/Doxyfile.in ${CMAKE_CURRENT_BINARY_DIR}/Doxyfile @ONLY)
+#add_custom_target(doc
+#${DOXYGEN_EXECUTABLE} ${CMAKE_CURRENT_BINARY_DIR}/Doxyfile
+#WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
+#COMMENT "Generating API documentation with Doxygen" VERBATIM
+#COMMAND echo
+#COMMAND echo
+#COMMAND echo "API documentation can be found in ${CMAKE_CURRENT_BINARY_DIR}/apidoc/"
+#COMMAND echo
+#)
+#endif(DOXYGEN_FOUND)
