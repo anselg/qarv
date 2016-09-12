@@ -111,16 +111,6 @@ set_prefixed(qarv_MOCS src/
 )
 qt5_wrap_cpp(qarv_MOCD ${qarv_MOCS})
 set_prefixed(qarv_SRCS src/
-#  qarvmainwindow.cpp
-#  main.cpp
-#  glvideowidget.cpp
-#  glhistogramwidget.cpp
-#  globals.cpp
-#  roicombobox.cpp
-#  qarvfeaturetree.cpp
-#  workthread.cpp
-#  recorders/recorder.cpp
-#  filters/filter.cpp
   api/qarvtype.cpp
   api/qarvgui.cpp
   api/qarvcamera.cpp
@@ -225,60 +215,6 @@ target_link_libraries(${libqarv}
 )
 set_target_properties(${libqarv} PROPERTIES SOVERSION ${qarv_ABI})
 
-#add_executable(qarvexe src/main.cpp)
-#target_link_libraries(qarvexe 
-#  ${Qt5Widgets_LIBRARIES} 
-#  ${Qt5OpenGL_LIBRARIES} 
-#  ${Qt5Svg_LIBRARIES} 
-#  ${Qt5Network_LIBRARIES} 
-#  ${libqarv}
-#)
-#set_target_properties(qarvexe PROPERTIES OUTPUT_NAME qarv)
-#
-#qt5_wrap_ui(qarv_videoplayer_UI src/utils/qarv_videoplayer.ui)
-#qt5_wrap_cpp(qarv_videoplayer_MOC
-#  src/utils/qarv_videoplayer.h
-#  src/glvideowidget.h
-#  src/globals.h
-#)
-#add_executable(qarv_videoplayer
-#  src/utils/qarv_videoplayer.cpp
-#  src/glvideowidget.cpp
-#  src/recorders/gstrecorders/gstrecorder_implementation.cpp
-#  src/globals.cpp
-#  ${qarv_videoplayer_MOC}
-#  ${qarv_videoplayer_UI}
-#)
-#target_link_libraries(qarv_videoplayer 
-#  ${Qt5Widgets_LIBRARIES} 
-#  ${Qt5OpenGL_LIBRARIES} 
-#  ${Qt5Svg_LIBRARIES} 
-#  ${Qt5Network_LIBRARIES} 
-#  ${libqarv}
-#)
-#
-#set_prefixed(qarv_ICONS res/icons/
-#  document-open.svgz
-#  document-save.svgz
-#  edit-clear.svgz
-#  media-playback-start.svgz
-#  media-record.svgz
-#  video-display.svgz
-#  view-refresh.svgz
-#  zoom-original.svgz
-#  office-chart-bar.svgz
-#  view-object-histogram-linear.svgz
-#  view-object-histogram-logarithmic.svgz
-#  edit-clear-locationbar-rtl.svgz
-#  edit-select.svgz
-#  media-playback-stop.svgz
-#  media-playback-pause.svgz
-#  dialog-information.svgz
-#  go-first.svgz
-#  go-last.svgz
-#)
-
-#install(TARGETS ${libqarv} qarvexe qarv_videoplayer
 install(TARGETS ${libqarv} 
         RUNTIME DESTINATION bin/
         LIBRARY DESTINATION lib/)
@@ -292,33 +228,3 @@ set_prefixed(qarv_IHDR src/api/
 )
 install(FILES ${qarv_IHDR}
         DESTINATION include/qarv-${qarv_API}/)
-#install(FILES ${qarv_TRANS} ${qarv_ICONS}
-#        DESTINATION ${qarv_DATA})
-#install(FILES res/icons/qarv.svgz
-#        RENAME application-x-qarv.svgz
-#        DESTINATION share/icons/)
-#install(FILES res/qarv.desktop res/qarv-player.desktop
-#        DESTINATION share/applications/)
-#install(FILES res/qarv.xml
-#        DESTINATION share/mime/packages/)
-#
-#configure_file(${CMAKE_CURRENT_SOURCE_DIR}/res/qarv.pc.in
-#	       ${CMAKE_CURRENT_BINARY_DIR}/qarv-${qarv_API}.pc
-#               @ONLY)
-#install(FILES ${CMAKE_CURRENT_BINARY_DIR}/qarv-${qarv_API}.pc
-#	DESTINATION lib/pkgconfig/)
-
-# add a target to generate API documentation with Doxygen
-#find_package(Doxygen)
-#if(DOXYGEN_FOUND)
-#configure_file(${CMAKE_CURRENT_SOURCE_DIR}/Doxyfile.in ${CMAKE_CURRENT_BINARY_DIR}/Doxyfile @ONLY)
-#add_custom_target(doc
-#${DOXYGEN_EXECUTABLE} ${CMAKE_CURRENT_BINARY_DIR}/Doxyfile
-#WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
-#COMMENT "Generating API documentation with Doxygen" VERBATIM
-#COMMAND echo
-#COMMAND echo
-#COMMAND echo "API documentation can be found in ${CMAKE_CURRENT_BINARY_DIR}/apidoc/"
-#COMMAND echo
-#)
-#endif(DOXYGEN_FOUND)
