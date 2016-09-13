@@ -228,3 +228,9 @@ set_prefixed(qarv_IHDR src/api/
 )
 install(FILES ${qarv_IHDR}
         DESTINATION include/qarv-${qarv_API}/)
+
+configure_file(${CMAKE_CURRENT_SOURCE_DIR}/res/qarv.pc.in
+	       ${CMAKE_CURRENT_BINARY_DIR}/qarv-${qarv_API}.pc
+               @ONLY)
+install(FILES ${CMAKE_CURRENT_BINARY_DIR}/qarv-${qarv_API}.pc
+	DESTINATION lib/pkgconfig/)
