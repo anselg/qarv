@@ -93,7 +93,7 @@ set_prefixed(qarv_UIS_pre src/
   mainwindow.ui
 )
 qt5_wrap_ui(qarv_UIS ${qarv_UIS_pre})
-set_prefixed(qarv_RCS_pre res/ icons/icons.qrc)
+#set_prefixed(qarv_RCS_pre res/ icons/icons.qrc)
 qt5_add_resources(qarv_RCS ${qarv_RCS_pre})
 set_prefixed(qarv_MOCS src/
   glvideowidget.h
