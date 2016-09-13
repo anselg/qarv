@@ -93,7 +93,7 @@ set_prefixed(qarv_UIS_pre src/
   mainwindow.ui
 )
 qt5_wrap_ui(qarv_UIS ${qarv_UIS_pre})
-#set_prefixed(qarv_RCS_pre res/ icons/icons.qrc)
+set_prefixed(qarv_RCS_pre res/)
 qt5_add_resources(qarv_RCS ${qarv_RCS_pre})
 set_prefixed(qarv_MOCS src/
   glvideowidget.h
@@ -111,7 +111,17 @@ set_prefixed(qarv_MOCS src/
 )
 qt5_wrap_cpp(qarv_MOCD ${qarv_MOCS})
 set_prefixed(qarv_SRCS src/
+  qarvmainwindow.cpp
+  main.cpp
+  glvideowidget.cpp
+  glhistogramwidget.cpp
+  globals.cpp
+  roicombobox.cpp
+  qarvfeaturetree.cpp
+  workthread.cpp
   api/qarvtype.cpp
+  recorders/recorder.cpp
+  filters/filter.cpp
   api/qarvgui.cpp
   api/qarvcamera.cpp
   api/qarvdecoder.cpp
@@ -160,6 +170,11 @@ set_prefixed(qarv_recorders_MOCS src/recorders/
   gstrecorders/gstrecorders.h
   imagerecorders/imagerecorder.h
 )
+#set_prefixed(qarv_recorders_MOCS src/recorders/
+#  rawrecorders.h
+#  gstrecorders.h
+#  imagerecorder.h
+#)
 qt5_wrap_cpp(qarv_recorders_MOCD ${qarv_recorders_MOCS})
 set_prefixed(qarv_recorders_SRC src/recorders/
   rawrecorders/rawdecoded16.cpp
@@ -228,6 +243,8 @@ set_prefixed(qarv_IHDR src/api/
 )
 install(FILES ${qarv_IHDR}
         DESTINATION include/qarv-${qarv_API}/)
+install(FILES ${qarv_TRANS}
+        DESTINATION ${qarv_DATA})
 
 configure_file(${CMAKE_CURRENT_SOURCE_DIR}/res/qarv.pc.in
 	       ${CMAKE_CURRENT_BINARY_DIR}/qarv-${qarv_API}.pc
