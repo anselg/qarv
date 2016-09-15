@@ -101,7 +101,7 @@ set_prefixed(qarv_UIS_pre src/
   mainwindow.ui
 )
 qt5_wrap_ui(qarv_UIS ${qarv_UIS_pre})
-set_prefixed(qarv_RCS_pre res/ icons/icons.qrc)
+#set_prefixed(qarv_RCS_pre res/ icons/icons.qrc)
 qt5_add_resources(qarv_RCS ${qarv_RCS_pre})
 set_prefixed(qarv_MOCS src/
   glvideowidget.h
@@ -316,26 +316,26 @@ target_link_libraries(qarv_videoplayer
   ${libqarv}
 )
 
-set_prefixed(qarv_ICONS res/icons/
-  document-open.svgz
-  document-save.svgz
-  edit-clear.svgz
-  media-playback-start.svgz
-  media-record.svgz
-  video-display.svgz
-  view-refresh.svgz
-  zoom-original.svgz
-  office-chart-bar.svgz
-  view-object-histogram-linear.svgz
-  view-object-histogram-logarithmic.svgz
-  edit-clear-locationbar-rtl.svgz
-  edit-select.svgz
-  media-playback-stop.svgz
-  media-playback-pause.svgz
-  dialog-information.svgz
-  go-first.svgz
-  go-last.svgz
-)
+#set_prefixed(qarv_ICONS res/icons/
+#  document-open.svgz
+#  document-save.svgz
+#  edit-clear.svgz
+#  media-playback-start.svgz
+#  media-record.svgz
+#  video-display.svgz
+#  view-refresh.svgz
+#  zoom-original.svgz
+#  office-chart-bar.svgz
+#  view-object-histogram-linear.svgz
+#  view-object-histogram-logarithmic.svgz
+#  edit-clear-locationbar-rtl.svgz
+#  edit-select.svgz
+#  media-playback-stop.svgz
+#  media-playback-pause.svgz
+#  dialog-information.svgz
+#  go-first.svgz
+#  go-last.svgz
+#)
 
 install(TARGETS ${libqarv} qarvexe qarv_videoplayer
         RUNTIME DESTINATION bin/
@@ -352,9 +352,9 @@ install(FILES ${qarv_IHDR}
         DESTINATION include/qarv-${qarv_API}/)
 install(FILES ${qarv_TRANS} ${qarv_ICONS}
         DESTINATION ${qarv_DATA})
-install(FILES res/icons/qarv.svgz
-        RENAME application-x-qarv.svgz
-        DESTINATION share/icons/)
+#install(FILES res/icons/qarv.svgz
+#        RENAME application-x-qarv.svgz
+#        DESTINATION share/icons/)
 install(FILES res/qarv.desktop res/qarv-player.desktop
         DESTINATION share/applications/)
 install(FILES res/qarv.xml
