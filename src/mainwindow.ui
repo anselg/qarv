@@ -83,12 +83,10 @@
                    <property name="text">
                     <string/>
                    </property>
-                   <!--
                    <property name="icon">
                     <iconset theme="view-refresh">
                      <normaloff>.</normaloff>.</iconset>
                    </property>
-                   -->
                   </widget>
                  </item>
                 </layout>
@@ -259,7 +257,7 @@
                       <string>Enter value manually.</string>
                      </property>
                      <property name="text">
-                      <string/>
+                      <string>Edit</string>
                      </property>
                      <!--
                      <property name="icon">
@@ -335,7 +333,7 @@
                       <string>Enter value manually.</string>
                      </property>
                      <property name="text">
-                      <string/>
+                      <string>Edit</string>
                      </property>
                      <!--
                      <property name="icon">
@@ -878,12 +876,10 @@
                  <property name="text">
                   <string/>
                  </property>
-                 <!--
                  <property name="icon">
                   <iconset theme="document-open">
                    <normaloff>.</normaloff>.</iconset>
                  </property>
-                 -->
                 </widget>
                </item>
               </layout>
@@ -994,12 +990,10 @@
                  <property name="text">
                   <string/>
                  </property>
-                 <!--
                  <property name="icon">
                   <iconset theme="document-open">
                    <normaloff>.</normaloff>.</iconset>
                  </property>
-                 -->
                 </widget>
                </item>
               </layout>
