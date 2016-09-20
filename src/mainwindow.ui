@@ -13,10 +13,12 @@
   <property name="windowTitle">
    <string>QArv</string>
   </property>
+  <!--
   <property name="windowIcon">
    <iconset resource="../res/icons/icons.qrc">
     <normaloff>:/icons/qarv.svgz</normaloff>:/icons/qarv.svgz</iconset>
   </property>
+  -->
   <widget class="QWidget" name="centralwidget">
    <layout class="QGridLayout" name="gridLayout_2">
     <item row="1" column="0">
@@ -255,12 +257,14 @@
                       <string>Enter value manually.</string>
                      </property>
                      <property name="text">
-                      <string/>
+                      <string>Edit</string>
                      </property>
+                     <!--
                      <property name="icon">
                       <iconset theme="edit-clear-locationbar-rtl">
                        <normaloff>.</normaloff>.</iconset>
                      </property>
+                     -->
                     </widget>
                    </item>
                   </layout>
@@ -329,12 +333,14 @@
                       <string>Enter value manually.</string>
                      </property>
                      <property name="text">
-                      <string/>
+                      <string>Edit</string>
                      </property>
+                     <!--
                      <property name="icon">
                       <iconset theme="edit-clear-locationbar-rtl">
                        <normaloff>.</normaloff>.</iconset>
                      </property>
+                     -->
                     </widget>
                    </item>
                   </layout>
@@ -486,10 +492,12 @@
                <property name="text">
                 <string>Pick</string>
                </property>
+               <!--
                <property name="icon">
                 <iconset theme="edit-select">
                  <normaloff>.</normaloff>.</iconset>
                </property>
+               -->
                <property name="checkable">
                 <bool>true</bool>
                </property>
@@ -1202,10 +1210,12 @@
          <property name="text">
           <string>Display image</string>
          </property>
+         <!--
          <property name="icon">
           <iconset theme="video-display">
            <normaloff>.</normaloff>.</iconset>
          </property>
+         -->
          <property name="checkable">
           <bool>true</bool>
          </property>
@@ -1219,10 +1229,12 @@
          <property name="text">
           <string>Actual size</string>
          </property>
+         <!--
          <property name="icon">
           <iconset theme="zoom-original">
            <normaloff>.</normaloff>.</iconset>
          </property>
+         -->
          <property name="checkable">
           <bool>true</bool>
          </property>
@@ -1296,10 +1308,12 @@
          <property name="text">
           <string>Logarithmic</string>
          </property>
+         <!--
          <property name="icon">
           <iconset theme="view-object-histogram-logarithmic">
            <normaloff>.</normaloff>.</iconset>
          </property>
+         -->
          <property name="checkable">
           <bool>true</bool>
          </property>
@@ -1393,10 +1407,12 @@
    <property name="checkable">
     <bool>true</bool>
    </property>
+   <!--
    <property name="icon">
     <iconset theme="camera">
      <normaloff>.</normaloff>.</iconset>
    </property>
+   -->
    <property name="text">
     <string>Snapshot</string>
    </property>
@@ -1408,10 +1424,12 @@
    <property name="checkable">
     <bool>true</bool>
    </property>
+   <!--
    <property name="icon">
     <iconset theme="media-record">
      <normaloff>.</normaloff>.</iconset>
    </property>
+   -->
    <property name="text">
     <string>Record</string>
    </property>
@@ -1423,10 +1441,12 @@
    <property name="enabled">
     <bool>false</bool>
    </property>
+   <!--
    <property name="icon">
     <iconset theme="media-playback-stop">
      <normaloff>.</normaloff>.</iconset>
    </property>
+   -->
    <property name="text">
     <string>Finish</string>
    </property>
@@ -1441,10 +1461,12 @@
    <property name="checked">
     <bool>true</bool>
    </property>
+   <!--
    <property name="icon">
     <iconset theme="video-display">
      <normaloff>.</normaloff>.</iconset>
    </property>
+   -->
    <property name="text">
     <string>Video Display</string>
    </property>
@@ -1459,10 +1481,12 @@
    <property name="checked">
     <bool>true</bool>
    </property>
+   <!--
    <property name="icon">
     <iconset theme="office-chart-bar">
      <normaloff>.</normaloff>.</iconset>
    </property>
+   -->
    <property name="text">
     <string>Histogram</string>
    </property>
@@ -1477,10 +1501,12 @@
    <property name="checked">
     <bool>true</bool>
    </property>
+   <!--
    <property name="icon">
     <iconset theme="dialog-information">
      <normaloff>.</normaloff>.</iconset>
    </property>
+   -->
    <property name="text">
     <string>Diagnostic Log</string>
    </property>
@@ -1522,9 +1548,11 @@
    <header>roicombobox.h</header>
   </customwidget>
  </customwidgets>
+ <!--
  <resources>
   <include location="../res/icons/icons.qrc"/>
  </resources>
+ -->
  <connections>
   <connection>
    <sender>histogramLog</sender>
