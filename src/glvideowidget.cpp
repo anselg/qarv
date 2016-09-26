@@ -25,7 +25,6 @@ using namespace QArv;
 
 GLVideoWidget::GLVideoWidget(QWidget* parent)
   : QGLWidget(QGLFormat(QGL::NoDepthBuffer | QGL::NoSampleBuffers), parent)
-  , idleImageRenderer(QString(":/icons/qarv.svgz"))
   , idling(true)
   , selecting(false)
   , drawRectangle(false)

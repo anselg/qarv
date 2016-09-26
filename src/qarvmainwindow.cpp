@@ -79,7 +79,6 @@ QArvMainWindow::QArvMainWindow(QWidget* parent, bool standalone_)
   connect(workthread, SIGNAL(recordingStopped()), SLOT(stopRecording()));
 
   // Setup theme icons if available.
-  /*
   bool usingFallbackIcons = false;
   QMap<QAbstractButton*, QString> icons;
   icons[unzoomButton] = "zoom-original";
@@ -87,6 +86,7 @@ QArvMainWindow::QArvMainWindow(QWidget* parent, bool standalone_)
   icons[refreshCamerasButton] = "view-refresh";
   icons[chooseFilenameButton] = "document-open";
   icons[chooseSnappathButton] = "document-open";
+  /*
   icons[editGainButton] = "edit-clear-locationbar-rtl";
   icons[editExposureButton] = "edit-clear-locationbar-rtl";
   icons[histogramLog] = "view-object-histogram-logarithmic";

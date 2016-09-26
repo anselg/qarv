@@ -33,12 +33,6 @@ GLHistogramWidget::GLHistogramWidget(QWidget* parent)
 {
   indexed = true;
   logarithmic = false;
-  QFile iconfile(QString(qarv_datafiles) +
-                 "/view-object-histogram-linear.svgz");
-  if (iconfile.exists())
-    idleImageIcon = QIcon(iconfile.fileName());
-  else
-    idleImageIcon = QIcon::fromTheme("view-object-histogram-linear");
   setIdle();
 }
 

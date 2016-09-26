@@ -81,7 +81,7 @@
                     <string>Refresh camera list.</string>
                    </property>
                    <property name="text">
-                    <string/>
+                    <string>Refresh</string>
                    </property>
                    <property name="icon">
                     <iconset theme="view-refresh">
@@ -874,7 +874,7 @@
                   <string>Open directory.</string>
                  </property>
                  <property name="text">
-                  <string/>
+                  <string>Open</string>
                  </property>
                  <property name="icon">
                   <iconset theme="document-open">
@@ -988,7 +988,7 @@
                   <string>Open file.</string>
                  </property>
                  <property name="text">
-                  <string/>
+                  <string>Open</string>
                  </property>
                  <property name="icon">
                   <iconset theme="document-open">
