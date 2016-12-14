@@ -32,7 +32,7 @@ class Mpeg4Format : public QObject, public OutputFormat
                         "Mpeg4Format.json")
 
 public:
-  QString name() { return "mpeg4"; }
+  QString name() { return "mpeg4 (lossy)"; }
   bool canWriteInfo() { return false; }
   Recorder* makeRecorder(QArvDecoder* decoder, QString fileName,
                          QSize frameSize, int framesPerSecond, bool writeInfo);
