@@ -17,26 +17,21 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef MP4RECORDER_H
-#define MP4RECORDER_H
+#include "recorders/gstrecorders/x264mkv.h"
+#include "recorders/gstrecorders/gstrecorder_implementation.h"
 
-#include "recorders/recorder.h"
+using namespace QArv;
 
-namespace QArv {
-
-class Mpeg4Format : public QObject, public OutputFormat
+Recorder*
+Mpeg4Format::makeRecorder(QArvDecoder* decoder, QString fileName,
+                               QSize frameSize, int framesPerSecond,
+                               bool writeInfo)
 {
-  Q_OBJECT
-  Q_INTERFACES(QArv::OutputFormat)
-  Q_PLUGIN_METADATA(IID "org.qt-project.Qt.QArvOutputFormat" FILE
-                        "Mpeg4Format.json")
-
-public:
-  QString name() { return "mpeg4 (lossy)"; }
-  bool canWriteInfo() { return false; }
-  Recorder* makeRecorder(QArvDecoder* decoder, QString fileName,
-                         QSize frameSize, int framesPerSecond, bool writeInfo);
-};
+  return makeGstRecorder({ "x264enc", "video/x-h264", "matroskamux" },
+                         "x264enc quantizer=0 ! video/x-h264 ! matroskamux", decoder, fileName, frameSize,
+                         framesPerSecond, writeInfo);
 }
 
-#endif
+Q_PLUGIN_METADATA(IID "org.qt-project.Qt.QArvOutputFormat")
+
+Q_IMPORT_PLUGIN(Mpeg4Format)
