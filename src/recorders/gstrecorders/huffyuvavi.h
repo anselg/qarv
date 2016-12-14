@@ -17,8 +17,8 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef GSTRECORDERS_H
-#define GSTRECORDERS_H
+#ifndef HUFFYUVAVIRECORDER_H
+#define HUFFYUVAVIRECORDER_H
 
 #include "recorders/recorder.h"
 
