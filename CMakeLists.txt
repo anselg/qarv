@@ -216,6 +216,7 @@ set_prefixed(qarv_recorders_MOCS src/recorders/
   rawrecorders/rawdecoded8.h
   rawrecorders/rawundecoded.h
   gstrecorders/huffyuvavi.h
+  gstrecorders/mpeg4.h
   imagerecorders/imagerecorder.h
 )
 #set_prefixed(qarv_recorders_MOCS src/recorders/
@@ -229,6 +230,7 @@ set_prefixed(qarv_recorders_SRC src/recorders/
   rawrecorders/rawdecoded8.cpp
   rawrecorders/rawundecoded.cpp
   gstrecorders/huffyuvavi.cpp
+  gstrecorders/mpeg4.cpp
   gstrecorders/gstrecorder_implementation.cpp
   imagerecorders/imagerecorder.cpp
 )
