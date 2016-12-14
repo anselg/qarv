@@ -17,7 +17,7 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "recorders/gstrecorders/gstrecorders.h"
+#include "recorders/gstrecorders/huffyuvavi.h"
 #include "recorders/gstrecorders/gstrecorder_implementation.h"
 
 using namespace QArv;
