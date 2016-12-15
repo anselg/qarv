@@ -27,8 +27,10 @@ HuffyuvAviFormat::makeRecorder(QArvDecoder* decoder, QString fileName,
                                QSize frameSize, int framesPerSecond,
                                bool writeInfo)
 {
+//  return makeGstRecorder({ "avenc_huffyuv", "avimux" },
+//                         "avenc_huffyuv ! avimux", decoder, fileName, frameSize,
   return makeGstRecorder({ "avenc_huffyuv", "avimux" },
-                         "avenc_huffyuv ! avimux", decoder, fileName, frameSize,
+                         "avimux", decoder, fileName, frameSize,
                          framesPerSecond, writeInfo);
 }
 
