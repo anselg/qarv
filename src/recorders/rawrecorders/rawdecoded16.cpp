@@ -58,16 +58,16 @@ public:
 
     file.open(QIODevice::WriteOnly);
     if (isOK()) {
-      enum PixelFormat fmt;
+      enum AVPixelFormat fmt;
       switch (decoder->cvType()) {
         case CV_8UC1:
         case CV_16UC1:
-          fmt = PIX_FMT_GRAY16;
+          fmt = AV_PIX_FMT_GRAY16;
           frameBytes = size.width() * size.height() * 2;
           break;
         case CV_8UC3:
         case CV_16UC3:
-          fmt = PIX_FMT_BGR48;
+          fmt = AV_PIX_FMT_BGR48;
           frameBytes = size.width() * size.height() * 6;
           break;
         default:

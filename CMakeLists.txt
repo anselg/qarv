@@ -51,7 +51,7 @@ find_package(Qt5Svg REQUIRED) # Qt5
 #)
 
 include(FindPkgConfig)
-pkg_search_module(ARAVIS REQUIRED aravis-0.4 aravis-0.2)
+pkg_search_module(ARAVIS REQUIRED aravis-0.6 aravis-0.4 aravis-0.2)
 pkg_check_modules(GIO REQUIRED gio-2.0)
 pkg_check_modules(SWSCALE REQUIRED libswscale)
 pkg_check_modules(AVCODEC REQUIRED libavcodec)
@@ -89,10 +89,9 @@ set(CMAKE_REQUIRED_LIBRARIES ${AVUTIL_LDFLAGS})
 set(CMAKE_REQUIRED_INCLUDES ${AVUTIL_INCLUDE_DIRS})
 
 # check_symbol_exists(av_pix_fmt_desc_get libavutil/pixdesc.h HAVE_FMT_DESC_GET) # remove for Qt5
-
-if (HAVE_FMT_DESC_GET)
+#if (HAVE_FMT_DESC_GET)
   add_definitions(-DHAVE_FMT_DESC_GET)
-endif()
+#endif()
 if (ARAVIS_VERSION VERSION_LESS "0.3.5")
   add_definitions(-DARAVIS_OLD_BUFFER)
 endif()

@@ -17,6 +17,9 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
+extern "C" {
+#include <arv.h>
+}
 #include "api/qarvdecoder.h"
 #include "decoders/graymap.h"
 #include "decoders/swscaledecoder.h"
@@ -25,9 +28,6 @@
 #include <QPluginLoader>
 #include <opencv2/imgproc/imgproc.hpp>
 #include <type_traits>
-extern "C" {
-#include <arvenums.h>
-}
 
 using namespace QArv;
 
@@ -190,14 +190,14 @@ initPluginFormats()
   return list;
 }
 
-static QMap<ArvPixelFormat, enum PixelFormat> initSwScaleFormats();
+static QMap<ArvPixelFormat, enum AVPixelFormat> initSwScaleFormats();
 
 // List of formats supported by plugins.
 static QList<QArvPixelFormat*> pluginFormats = initPluginFormats();
 
 // List of formats supported by libswscale, with mappings to
 // appropriate ffmpeg formats.
-QMap<ArvPixelFormat, enum PixelFormat> swScaleFormats = initSwScaleFormats();
+QMap<ArvPixelFormat, enum AVPixelFormat> swScaleFormats = initSwScaleFormats();
 
 QList<ArvPixelFormat>
 QArvPixelFormat::supportedFormats()
@@ -234,12 +234,12 @@ QArvDecoder::makeDecoder(QByteArray specification)
     s >> fmt >> fast;
     return QArvDecoder::makeDecoder(fmt, size, fast);
   } else if (type == "SwScale") {
-    static_assert(sizeof(PixelFormat) <= sizeof(qlonglong),
-                  "qlonglong not large enough to hold libav PixelFormat.");
+    static_assert(sizeof(AVPixelFormat) <= sizeof(qlonglong),
+                  "qlonglong not large enough to hold libav AVPixelFormat.");
     qlonglong fmt;
     int flags;
     s >> fmt >> flags;
-    return QArvDecoder::makeSwScaleDecoder((PixelFormat)fmt, size, flags);
+    return QArvDecoder::makeSwScaleDecoder((AVPixelFormat)fmt, size, flags);
   }
   return NULL;
 }
@@ -271,7 +271,7 @@ QArvDecoder::makeDecoder(ArvPixelFormat format, QSize size, bool fast)
  * Returns NULL if the format is not supported.
  */
 QArvDecoder*
-QArvDecoder::makeSwScaleDecoder(PixelFormat fmt, QSize size, int swsFlags)
+QArvDecoder::makeSwScaleDecoder(AVPixelFormat fmt, QSize size, int swsFlags)
 {
   if (swsFlags)
     return new QArv::SwScaleDecoder(size, fmt, 0, swsFlags);
@@ -279,19 +279,19 @@ QArvDecoder::makeSwScaleDecoder(PixelFormat fmt, QSize size, int swsFlags)
     return new QArv::SwScaleDecoder(size, fmt, 0);
 }
 
-static QMap<ArvPixelFormat, PixelFormat>
+static QMap<ArvPixelFormat, AVPixelFormat>
 initSwScaleFormats()
 {
-  QMap<ArvPixelFormat, PixelFormat> m;
+  QMap<ArvPixelFormat, AVPixelFormat> m;
 
-  m[ARV_PIXEL_FORMAT_YUV_422_PACKED] = PIX_FMT_UYVY422;
-  m[ARV_PIXEL_FORMAT_RGB_8_PACKED] = PIX_FMT_RGB24;
-  m[ARV_PIXEL_FORMAT_BGR_8_PACKED] = PIX_FMT_BGR24;
-  m[ARV_PIXEL_FORMAT_RGBA_8_PACKED] = PIX_FMT_RGBA;
-  m[ARV_PIXEL_FORMAT_BGRA_8_PACKED] = PIX_FMT_BGRA;
-  m[ARV_PIXEL_FORMAT_YUV_411_PACKED] = PIX_FMT_UYYVYY411;
-  m[ARV_PIXEL_FORMAT_YUV_422_PACKED] = PIX_FMT_UYVY422;
-  m[ARV_PIXEL_FORMAT_YUV_422_YUYV_PACKED] = PIX_FMT_YUYV422;
+  m[ARV_PIXEL_FORMAT_YUV_422_PACKED] = AV_PIX_FMT_UYVY422;
+  m[ARV_PIXEL_FORMAT_RGB_8_PACKED] = AV_PIX_FMT_RGB24;
+  m[ARV_PIXEL_FORMAT_BGR_8_PACKED] = AV_PIX_FMT_BGR24;
+  m[ARV_PIXEL_FORMAT_RGBA_8_PACKED] = AV_PIX_FMT_RGBA;
+  m[ARV_PIXEL_FORMAT_BGRA_8_PACKED] = AV_PIX_FMT_BGRA;
+  m[ARV_PIXEL_FORMAT_YUV_411_PACKED] = AV_PIX_FMT_UYYVYY411;
+  m[ARV_PIXEL_FORMAT_YUV_422_PACKED] = AV_PIX_FMT_UYVY422;
+  m[ARV_PIXEL_FORMAT_YUV_422_YUYV_PACKED] = AV_PIX_FMT_YUYV422;
 
   return m;
 }

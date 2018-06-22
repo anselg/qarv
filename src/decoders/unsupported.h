@@ -20,10 +20,10 @@
 #ifndef UNSUPPORTED_H
 #define UNSUPPORTED_H
 
-#include "api/qarvdecoder.h"
 extern "C" {
-#include <arvenums.h>
+#include <arv.h>
 }
+#include "api/qarvdecoder.h"
 
 /* This is a decoder class which can specify the required
  * ArvPixelFormat and frame size nothing else.
