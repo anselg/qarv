@@ -17,14 +17,14 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
+extern "C" {
+#include <arv.h>
+}
 #include "api/qarvrecordedvideo.h"
 #include "globals.h"
 #include <QDir>
 #include <QFileInfo>
 #include <QSettings>
-extern "C" {
-#include <arvbuffer.h>
-}
 
 using namespace QArv;
 
@@ -34,7 +34,7 @@ QArvRecordedVideo::QArvRecordedVideo(const QString& filename)
   : fps(0)
   , uncompressed(true)
   , arvPixfmt(0)
-  , swscalePixfmt(PIX_FMT_NONE)
+  , swscalePixfmt(AV_PIX_FMT_NONE)
   , frameBytes_(0)
 {
 
@@ -76,7 +76,7 @@ QArvRecordedVideo::QArvRecordedVideo(const QString& filename)
     arvPixfmt = v.toString().toULongLong(NULL, 16);
   } else if (type == "libavutil") {
     v = s.value("libavutil_pixel_format");
-    swscalePixfmt = (enum PixelFormat)v.toLongLong();
+    swscalePixfmt = (enum AVPixelFormat)v.toLongLong();
   } else {
     logMessage() << "Unable to determine decoder type.";
     isOK = false;
@@ -149,7 +149,7 @@ QArvRecordedVideo::makeDecoder()
     return NULL;
   if (arvPixfmt != 0) {
     return QArvDecoder::makeDecoder(arvPixfmt, fsize);
-  } else if (swscalePixfmt != PIX_FMT_NONE) {
+  } else if (swscalePixfmt != AV_PIX_FMT_NONE) {
     return QArvDecoder::makeSwScaleDecoder(swscalePixfmt, fsize);
   } else {
     isOK = false;

@@ -62,9 +62,9 @@ QArvCameraId::QArvCameraId()
 QArvCameraId::QArvCameraId(const char* id_, const char* vendor_,
                            const char* model_)
 {
-  id = strdup(id_);
-  vendor = strdup(vendor_);
-  model = strdup(model_);
+  id = strdup(id_ ? id_ : "");
+  vendor = strdup(vendor_ ? vendor_ : "Unknown");
+  model = strdup(model_ ? model_ : "Unknown");
 }
 
 QArvCameraId::QArvCameraId(const QArvCameraId& camid)

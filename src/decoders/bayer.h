@@ -20,12 +20,12 @@
 #ifndef BAYER_H
 #define BAYER_H
 
+extern "C" {
+#include <arv.h>
+}
 #include "api/qarvdecoder.h"
 #include <QDataStream>
 #include <opencv2/imgproc/imgproc.hpp>
-extern "C" {
-#include <arvenums.h>
-}
 
 /*
 #include "decoders/bayer/bayerbg10.h"

@@ -20,10 +20,10 @@
 #ifndef MONO12_H
 #define MONO12_H
 
-#include "decoders/monounpacked.h"
 extern "C" {
-#include <arvenums.h>
+#include <arv.h>
 }
+#include "decoders/monounpacked.h"
 
 namespace QArv {
 

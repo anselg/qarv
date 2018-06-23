@@ -17,6 +17,10 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
+extern "C" {
+#include <arv.h>
+}
+
 #include "globals.h"
 #include "qarvmainwindow.h"
 #include "api/qarvcameradelegate.h"
@@ -37,10 +41,6 @@
 #include <QToolButton>
 #include <QtConcurrent/QtConcurrentRun>
 #include <qdatetime.h>
-
-extern "C" {
-#include <arvbuffer.h>
-}
 
 Q_DECLARE_METATYPE(cv::Mat)
 

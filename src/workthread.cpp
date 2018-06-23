@@ -17,16 +17,16 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
+extern "C" {
+#include <arv.h>
+}
+
 #include "workthread.h"
 #include "filters/filter.h"
 #include "glhistogramwidget.h"
 #include "recorders/recorder.h"
 #include <QCoreApplication>
 #include <QThread>
-
-extern "C" {
-#include <arvbuffer.h>
-}
 
 using namespace QArv;
 

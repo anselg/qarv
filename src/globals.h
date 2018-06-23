@@ -20,6 +20,7 @@
 #ifndef GLOBALS_H
 #define GLOBALS_H
 
+#include <math.h>
 #include <QDebug>
 #include <QStandardItemModel>
 

@@ -20,13 +20,13 @@
 #ifndef BAYERRG12_H
 #define BAYERRG12_H
 
+extern "C" {
+#include <arv.h>
+}
 #include "api/qarvdecoder.h"
 #include "decoders/bayer.h"
 #include <QDataStream>
 #include <opencv2/imgproc/imgproc.hpp>
-extern "C" {
-#include <arvenums.h>
-}
 
 // Some formats appeared only after aravis-0.2.0, so
 // we check for their presence. The 12_PACKED formats

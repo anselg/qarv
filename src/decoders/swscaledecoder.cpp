@@ -30,7 +30,7 @@ extern "C" {
 
 using namespace QArv;
 
-SwScaleDecoder::SwScaleDecoder(QSize size_, PixelFormat inputPixfmt_,
+SwScaleDecoder::SwScaleDecoder(QSize size_, AVPixelFormat inputPixfmt_,
                                ArvPixelFormat arvPixFmt, int swsFlags)
   : size(size_)
   , inputPixfmt(inputPixfmt_)
@@ -55,21 +55,21 @@ SwScaleDecoder::SwScaleDecoder(QSize size_, PixelFormat inputPixfmt_,
 #endif
     if (bitsPerPixel / components > 8) {
       if (components == 1) {
-        outputPixFmt = PIX_FMT_GRAY16;
+        outputPixFmt = AV_PIX_FMT_GRAY16;
         cvMatType = CV_16UC1;
         bufferBytesPerPixel = 2;
       } else {
-        outputPixFmt = PIX_FMT_BGR48;
+        outputPixFmt = AV_PIX_FMT_BGR48;
         cvMatType = CV_16UC3;
         bufferBytesPerPixel = 6;
       }
     } else {
       if (components == 1) {
-        outputPixFmt = PIX_FMT_GRAY8;
+        outputPixFmt = AV_PIX_FMT_GRAY8;
         cvMatType = CV_8UC1;
         bufferBytesPerPixel = 1;
       } else {
-        outputPixFmt = PIX_FMT_BGR24;
+        outputPixFmt = AV_PIX_FMT_BGR24;
         cvMatType = CV_8UC3;
         bufferBytesPerPixel = 3;
       }
@@ -101,7 +101,7 @@ SwScaleDecoder::pixelFormat()
   return arvPixelFormat;
 }
 
-PixelFormat
+AVPixelFormat
 SwScaleDecoder::swscalePixelFormat()
 {
   return inputPixfmt;
